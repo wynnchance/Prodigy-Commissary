@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Officer Bill and Fix Dialogs</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap">
+<style>
+body{margin:0;font-family:'Source Sans 3',system-ui,sans-serif;color:#1b2538;background:#f4f6f9}
+a{color:#1b5fb4}a:hover{color:#0f3f7d}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 16px;border-radius:8px;border:1px solid #cdd5e0;background:#fff;color:#1b2538;font:600 15px 'Source Sans 3',sans-serif;cursor:pointer;text-decoration:none}
+.btn.p{background:#1b5fb4;border-color:#1b5fb4;color:#fff}
+.btn.d{background:#b42318;border-color:#b42318;color:#fff}
+.f{display:flex;flex-direction:column;gap:6px;font-size:14px;color:#5a6779}
+.f input,.f select,.f textarea{min-height:48px;padding:0 12px;border:1px solid #cdd5e0;border-radius:8px;font:17px 'Source Sans 3',sans-serif;background:#fff;color:#1b2538}
+.f textarea{padding:10px 12px;font-size:15px}
+.dlg{background:#fff;border-radius:14px;box-shadow:0 12px 40px rgba(27,37,56,.25);padding:24px;display:flex;flex-direction:column;gap:18px;box-sizing:border-box}
+.opt{display:flex;gap:12px;align-items:flex-start;padding:14px;border:2px solid #cdd5e0;border-radius:10px;cursor:pointer;font-size:15px}
+.opt.on{border-color:#1b5fb4;background:#e3eefc}
+.opt input{width:20px;height:20px;margin:2px 0 0}
+.opt small{display:block;color:#5a6779;font-size:13px}
+.chip{display:inline-block;padding:2px 10px;border-radius:999px;font-size:13px;font-weight:600}
+.ok{background:#dcf5e6;color:#166534}.warn{background:#fff1d6;color:#8a4b00}.bad{background:#fde4e1;color:#9f1d12}
+.help{font-size:13px;color:#5a6779}
+.lbl{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#5a6779;font-weight:700}
+</style>
+</helmet>
+<div style="min-height:1040px;background:#5f6b7c;padding:28px;box-sizing:border-box">
+  <div style="color:#fff;font-size:14px;margin-bottom:16px">Both dialogs open over the inmate account page. Shown side by side here for review.</div>
+  <div style="display:grid;grid-template-columns:repeat(2, minmax(0, 1fr));gap:28px;align-items:start">
+
+    <section class="dlg" aria-labelledby="bill-h">
+      <div>
+        <div class="lbl">Bill inmate</div>
+        <h1 id="bill-h" style="margin:4px 0 0;font-size:22px">ALLEN, CHRISTOPHER WAYNE</h1>
+        <div class="help">Booking 0000042262. Available now $43.00.</div>
+      </div>
+      <label class="f">What is this for?
+        <select><option>Medical visit</option><option>Medication</option><option>Property damage</option><option>Copies</option><option>Booking fee</option><option>Other (describe below)</option></select>
+        <span class="help">Charge types and amounts are set by your Jail Administrator.</span>
+      </label>
+      <div style="display:grid;grid-template-columns:repeat(2, minmax(0, 1fr));gap:12px">
+        <label class="f">Amount<input type="text" value="$8.00" style="font-size:22px;font-weight:700"></label>
+        <label class="f">Date of service<input type="date" value="2026-10-16"></label>
+      </div>
+      <label class="f">Note<textarea rows="2" placeholder="Nurse sick call, seen by RN Patel"></textarea></label>
+      <div style="padding:14px;border-radius:10px;background:#f9fafc;border:1px solid #e3e8ef;font-size:15px">
+        <strong>What happens:</strong> $8.00 is taken from the inmate's available balance now. New balance $35.00.
+        <div class="help" style="margin-top:4px">If the balance were short, the unpaid part would stay on the account as owed and be collected from the next deposit.</div>
+      </div>
+      <div style="display:flex;gap:10px;justify-content:flex-end;border-top:1px solid #e3e8ef;padding-top:16px">
+        <a class="btn" href="OfficerInmate.dc.html">Cancel</a>
+        <button class="btn p" type="button">Post charge and print receipt</button>
+      </div>
+    </section>
+
+    <section class="dlg" aria-labelledby="fix-h">
+      <div>
+        <div class="lbl">Fix a transaction</div>
+        <h1 id="fix-h" style="margin:4px 0 0;font-size:22px">Cash deposit, $43.00</h1>
+        <div class="help">Receipt #10481, today 7:45 AM, by Ofc. Ramirez. Posted to ALLEN, CHRISTOPHER WAYNE.</div>
+      </div>
+      <div>
+        <div style="font-weight:700;font-size:16px;margin-bottom:10px">What went wrong?</div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <label class="opt on"><input type="radio" name="fix" checked><span><strong>Wrong inmate</strong><small>Move this deposit to the inmate it belongs to. This inmate's balance drops by $43.00.</small></span></label>
+          <label class="opt"><input type="radio" name="fix"><span><strong>Wrong amount</strong><small>Enter the correct amount. The difference is posted as a correction.</small></span></label>
+          <label class="opt"><input type="radio" name="fix"><span><strong>Should not have been posted</strong><small>Voids the deposit. Allowed today only, before the bank deposit is made.</small></span></label>
+        </div>
+      </div>
+      <label class="f">Move to
+        <input type="search" value="ALLEN, CHRISTOPHER M (Booking 0000042198)">
+        <span class="help">Two inmates named Allen booked this week. Check the booking number.</span>
+      </label>
+      <label class="f">Why<textarea rows="2" placeholder="Required. Shows on both receipts and the audit log.">Picked the wrong Allen at booking</textarea></label>
+      <div style="padding:14px;border-radius:10px;background:#fff1d6;border:1px solid #f0d9a8;font-size:15px">
+        <strong>Before you post:</strong> the original stays on record. Two new entries are made, one reversing $43.00 here and one adding $43.00 to the other inmate. Corrected receipts print for both.
+      </div>
+      <div style="display:flex;gap:10px;justify-content:flex-end;border-top:1px solid #e3e8ef;padding-top:16px">
+        <a class="btn" href="OfficerInmate.dc.html">Cancel</a>
+        <button class="btn d" type="button">Post fix and print receipts</button>
+      </div>
+    </section>
+  </div>
+
+  <div style="margin-top:28px;display:grid;grid-template-columns:repeat(3, minmax(0, 1fr));gap:20px">
+    <div class="dlg" style="padding:18px;gap:8px">
+      <div class="lbl">Fix options by type</div>
+      <div style="font-size:15px"><span class="chip ok">Deposit</span> Wrong inmate, wrong amount, void (same day)</div>
+    </div>
+    <div class="dlg" style="padding:18px;gap:8px">
+      <div class="lbl">Fix options by type</div>
+      <div style="font-size:15px"><span class="chip bad">Charge</span> Wrong amount, wrong type, void</div>
+    </div>
+    <div class="dlg" style="padding:18px;gap:8px">
+      <div class="lbl">Fix options by type</div>
+      <div style="font-size:15px"><span class="chip warn">Hold</span> Release early (Manager), change date. Purchases: Manager only.</div>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1040}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

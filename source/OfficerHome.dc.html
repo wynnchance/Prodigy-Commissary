@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Officer Home</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap">
+<style>
+body{margin:0;font-family:'Source Sans 3',system-ui,sans-serif;color:#1b2538;background:#f4f6f9}
+a{color:#1b5fb4}a:hover{color:#0f3f7d}
+.nav a{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:8px;color:#c7d0dd;text-decoration:none;font-size:15px;min-height:44px;box-sizing:border-box}
+.nav a:hover{background:#2a3650;color:#fff}
+.nav a.on{background:#1b5fb4;color:#fff;font-weight:600}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 16px;border-radius:8px;border:1px solid #cdd5e0;background:#fff;color:#1b2538;font:600 15px 'Source Sans 3',sans-serif;cursor:pointer;text-decoration:none}
+.btn.p{background:#1b5fb4;border-color:#1b5fb4;color:#fff}
+.big{display:flex;flex-direction:column;align-items:flex-start;gap:8px;padding:20px;border-radius:12px;background:#fff;border:1px solid #e3e8ef;text-decoration:none;color:#1b2538;min-height:120px;box-sizing:border-box}
+.big:hover{border-color:#1b5fb4}
+.big strong{font-size:20px}
+.big span{color:#5a6779;font-size:14px}
+table{border-collapse:collapse;width:100%;font-size:15px}
+th{text-align:left;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#5a6779;padding:10px 12px;border-bottom:1px solid #e3e8ef}
+td{padding:12px;border-bottom:1px solid #eef1f5;vertical-align:middle}
+.chip{display:inline-block;padding:2px 10px;border-radius:999px;font-size:13px;font-weight:600}
+.ok{background:#dcf5e6;color:#166534}.warn{background:#fff1d6;color:#8a4b00}.off{background:#e8ecf2;color:#4a5668}
+.card{background:#fff;border:1px solid #e3e8ef;border-radius:12px}
+</style>
+</helmet>
+<div style="display:flex;flex-wrap:wrap;min-height:900px">
+  <nav class="nav" style="width:236px;background:#1b2538;padding:16px 12px;box-sizing:border-box;display:flex;flex-direction:column">
+    <div style="display:flex;align-items:center;gap:10px;padding:4px 12px 4px;color:#fff;font-weight:700;font-size:18px">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#5aa9ff" stroke-width="2" aria-hidden="true"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 12l9 4 9-4"/><path d="M3 17l9 4 9-4"/></svg>
+      Commissary
+    </div>
+    <div style="padding:0 12px 14px;color:#7b889c;font-size:13px">Atoka County Jail</div>
+    <a href="OfficerHome.dc.html" class="on">Home</a>
+    <a href="OfficerInmate.dc.html">Find inmate</a>
+    <a href="OfficerNewInmate.dc.html">New inmate</a>
+    <a href="OfficerDeposit.dc.html">Deposit</a>
+    <a href="OfficerFix.dc.html">Bill inmate</a>
+    <a href="#receipts">My receipts today</a>
+    <div style="flex:1"></div>
+    <div style="border-top:1px solid #2a3650;padding:12px;color:#c7d0dd;font-size:14px">Ofc. J. Ramirez<br><span style="color:#7b889c">Detention Officer</span></div>
+    <a href="#logout" style="min-height:40px">Log out</a>
+  </nav>
+
+  <main style="flex:999 1 560px;min-width:0;display:flex;flex-direction:column">
+    <header style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;padding:14px 28px;background:#fff;border-bottom:1px solid #e3e8ef">
+      <div style="font-weight:700;font-size:16px">Atoka County Jail</div>
+      <div style="color:#5a6779;font-size:14px">Friday, October 16, 2026</div>
+      <div style="flex:1"></div>
+      <a class="btn" href="#help" style="min-height:40px">Help</a>
+    </header>
+
+    <div style="padding:28px;display:flex;flex-direction:column;gap:24px;max-width:1180px">
+      <div>
+        <h1 style="margin:0 0 12px;font-size:26px">Find an inmate</h1>
+        <form style="display:flex;gap:10px;flex-wrap:wrap" action="OfficerInmate.dc.html">
+          <label for="find" style="position:absolute;left:-9999px">Name, booking number, or account number</label>
+          <input id="find" type="search" placeholder="Type a name, booking number, or account number" autofocus style="flex:1 1 420px;min-height:52px;padding:0 16px;border:2px solid #1b5fb4;border-radius:10px;font:18px 'Source Sans 3',sans-serif;box-sizing:border-box">
+          <a class="btn p" href="OfficerInmate.dc.html" style="min-height:52px;padding:0 28px;font-size:17px">Find</a>
+        </form>
+        <div style="color:#5a6779;font-size:14px;margin-top:8px">Searches current inmates. <a href="#closed">Include released inmates</a></div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(4, minmax(0, 1fr));gap:16px">
+        <a class="big" href="OfficerDeposit.dc.html"><strong>Deposit</strong><span>Cash, check, money order, or card received for an inmate</span></a>
+        <a class="big" href="OfficerFix.dc.html"><strong>Bill inmate</strong><span>Medical visit, medication, property damage, copies, fees</span></a>
+        <a class="big" href="OfficerNewInmate.dc.html"><strong>New inmate</strong><span>Only if the booking did not come over from the JMS</span></a>
+        <a class="big" href="#receipts"><strong>My receipts today</strong><span>Reprint any receipt you issued this shift</span></a>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(2, minmax(0, 1fr));gap:16px">
+        <div class="card" style="overflow:hidden">
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 16px;border-bottom:1px solid #e3e8ef">
+            <h2 style="margin:0;font-size:17px">Booked in the last 24 hours</h2>
+            <span class="chip ok">JMS feed OK, 8:52 AM</span>
+          </div>
+          <table>
+            <thead><tr><th>Inmate</th><th>Booked</th><th>Balance</th><th></th></tr></thead>
+            <tbody>
+              <tr><td><strong>ALLEN, CHRISTOPHER WAYNE</strong><br><span style="color:#5a6779;font-size:13px">Booking 0000042262</span></td><td>Today 7:40 AM</td><td>$0.00</td><td><a class="btn" href="OfficerDeposit.dc.html" style="min-height:36px">Deposit</a></td></tr>
+              <tr><td><strong>MARTINEZ, DAVID R</strong><br><span style="color:#5a6779;font-size:13px">Booking 0000042261</span></td><td>Today 2:15 AM</td><td>$43.00</td><td><a class="btn" href="OfficerInmate.dc.html" style="min-height:36px">Open</a></td></tr>
+              <tr><td><strong>HOLT, SAMANTHA J</strong><br><span style="color:#5a6779;font-size:13px">Booking 0000042260 <span class="chip warn">Created manually</span></span></td><td>Yesterday 9:30 PM</td><td>$12.50</td><td><a class="btn" href="OfficerInmate.dc.html" style="min-height:36px">Open</a></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card" style="overflow:hidden">
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 16px;border-bottom:1px solid #e3e8ef">
+            <h2 style="margin:0;font-size:17px">My receipts today</h2>
+            <span style="color:#5a6779;font-size:14px">4 receipts, $135.50</span>
+          </div>
+          <table>
+            <thead><tr><th>Receipt</th><th>Inmate</th><th>Amount</th><th></th></tr></thead>
+            <tbody>
+              <tr><td>#10482<br><span style="color:#5a6779;font-size:13px">8:52 AM, cash</span></td><td>ALEXANDER, GUY</td><td>$25.00</td><td><a href="#r" style="font-size:14px">Reprint</a> <span style="color:#cdd5e0">|</span> <a href="OfficerFix.dc.html" style="font-size:14px">Fix</a></td></tr>
+              <tr><td>#10481<br><span style="color:#5a6779;font-size:13px">7:45 AM, check, on hold</span></td><td>MARTINEZ, DAVID R</td><td>$43.00</td><td><a href="#r" style="font-size:14px">Reprint</a> <span style="color:#cdd5e0">|</span> <a href="OfficerFix.dc.html" style="font-size:14px">Fix</a></td></tr>
+              <tr><td>#10480<br><span style="color:#5a6779;font-size:13px">7:10 AM, debit card</span></td><td>HOLT, SAMANTHA J</td><td>$12.50</td><td><a href="#r" style="font-size:14px">Reprint</a> <span style="color:#cdd5e0">|</span> <a href="OfficerFix.dc.html" style="font-size:14px">Fix</a></td></tr>
+              <tr><td>#10479<br><span style="color:#5a6779;font-size:13px">6:30 AM, medical charge</span></td><td>ABBETT, ASHLEY MARIE</td><td>-$8.00</td><td><a href="#r" style="font-size:14px">Reprint</a> <span style="color:#cdd5e0">|</span> <a href="OfficerFix.dc.html" style="font-size:14px">Fix</a></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":900}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

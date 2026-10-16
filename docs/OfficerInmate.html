@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Officer Inmate Account</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap">
+<style>
+body{margin:0;font-family:'Source Sans 3',system-ui,sans-serif;color:#1b2538;background:#f4f6f9}
+a{color:#1b5fb4}a:hover{color:#0f3f7d}
+.nav a{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:8px;color:#c7d0dd;text-decoration:none;font-size:15px;min-height:44px;box-sizing:border-box}
+.nav a:hover{background:#2a3650;color:#fff}
+.nav a.on{background:#1b5fb4;color:#fff;font-weight:600}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 16px;border-radius:8px;border:1px solid #cdd5e0;background:#fff;color:#1b2538;font:600 15px 'Source Sans 3',sans-serif;cursor:pointer;text-decoration:none}
+.btn.p{background:#1b5fb4;border-color:#1b5fb4;color:#fff}
+.btn.s{min-height:36px;padding:0 12px;font-size:14px}
+table{border-collapse:collapse;width:100%;font-size:15px}
+th{text-align:left;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#5a6779;padding:10px 12px;border-bottom:1px solid #e3e8ef}
+td{padding:12px;border-bottom:1px solid #eef1f5;vertical-align:middle}
+.chip{display:inline-block;padding:2px 10px;border-radius:999px;font-size:13px;font-weight:600}
+.ok{background:#dcf5e6;color:#166534}.warn{background:#fff1d6;color:#8a4b00}.off{background:#e8ecf2;color:#4a5668}.bad{background:#fde4e1;color:#9f1d12}
+.card{background:#fff;border:1px solid #e3e8ef;border-radius:12px}
+.stat{display:flex;flex-direction:column;gap:2px}
+.stat b{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#5a6779}
+.stat span{font-size:30px;font-weight:700}
+.kv{display:grid;grid-template-columns:repeat(2, minmax(0, 1fr));gap:4px 16px;font-size:15px;margin:0}
+.kv dt{color:#5a6779}.kv dd{margin:0;font-weight:600}
+</style>
+</head>
+<body>
+
+
+<div style="display:flex;flex-wrap:wrap;min-height:1040px">
+  <nav class="nav" style="width:236px;background:#1b2538;padding:16px 12px;box-sizing:border-box;display:flex;flex-direction:column">
+    <div style="display:flex;align-items:center;gap:10px;padding:4px 12px 4px;color:#fff;font-weight:700;font-size:18px">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#5aa9ff" stroke-width="2" aria-hidden="true"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 12l9 4 9-4"/><path d="M3 17l9 4 9-4"/></svg>
+      Commissary
+    </div>
+    <div style="padding:0 12px 14px;color:#7b889c;font-size:13px">Atoka County Jail</div>
+    <a href="OfficerHome.html">Home</a>
+    <a href="OfficerInmate.html" class="on">Find inmate</a>
+    <a href="OfficerNewInmate.html">New inmate</a>
+    <a href="OfficerDeposit.html">Deposit</a>
+    <a href="OfficerFix.html">Bill inmate</a>
+    <a href="#receipts">My receipts today</a>
+    <div style="flex:1"></div>
+    <div style="border-top:1px solid #2a3650;padding:12px;color:#c7d0dd;font-size:14px">Ofc. J. Ramirez<br><span style="color:#7b889c">Detention Officer</span></div>
+    <a href="#logout" style="min-height:40px">Log out</a>
+  </nav>
+
+  <main style="flex:999 1 560px;min-width:0;display:flex;flex-direction:column">
+    <header style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;padding:14px 28px;background:#fff;border-bottom:1px solid #e3e8ef">
+      <label for="find2" style="position:absolute;left:-9999px">Find another inmate</label>
+      <input id="find2" type="search" placeholder="Find another inmate" style="flex:1 1 320px;max-width:520px;min-height:44px;padding:0 14px;border:1px solid #cdd5e0;border-radius:8px;font:15px 'Source Sans 3',sans-serif;box-sizing:border-box">
+      <div style="flex:1"></div>
+      <div style="font-weight:700">Atoka County Jail</div>
+    </header>
+
+    <div style="padding:20px 28px;display:flex;flex-direction:column;gap:20px">
+      <div style="font-size:14px;color:#5a6779"><a href="OfficerHome.html">Home</a> / ALLEN, CHRISTOPHER WAYNE</div>
+
+      <div class="card" style="padding:20px;display:flex;flex-wrap:wrap;gap:20px;align-items:flex-start">
+        <div style="width:96px;height:112px;border-radius:10px;background:#e8ecf2;display:flex;align-items:center;justify-content:center;color:#5a6779;font-size:13px">Photo from JMS</div>
+        <div style="flex:1 1 320px;min-width:0">
+          <h1 style="margin:0;font-size:26px">ALLEN, CHRISTOPHER WAYNE</h1>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 14px;align-items:center;font-size:15px;color:#5a6779">
+            <span>Booking 0000042262</span><span>DOB 12/20/1994</span><span>Pod B, Cell 12</span><span>Booked today 7:40 AM</span>
+            <span class="chip ok">In custody</span>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:28px">
+            <div class="stat"><b>Available now</b><span>$43.00</span></div>
+            <div class="stat"><b>On hold</b><span style="color:#8a4b00">$50.00</span><em style="font-style:normal;font-size:13px;color:#5a6779">Check, releases 10/23</em></div>
+            <div class="stat"><b>Owes</b><span style="color:#9f1d12">$8.00</span><em style="font-style:normal;font-size:13px;color:#5a6779">Medical visit</em></div>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(2, minmax(0, 1fr));gap:8px;min-width:300px">
+          <a class="btn p" href="OfficerDeposit.html">Deposit</a>
+          <a class="btn" href="OfficerFix.html">Bill inmate</a>
+          <a class="btn" href="#print">Print statement</a>
+          <a class="btn" href="#receipt">Print receipt</a>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(3, minmax(0, 1fr));gap:20px">
+        <div class="card" style="grid-column:span 2;overflow:hidden">
+          <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:10px;padding:14px 16px;border-bottom:1px solid #e3e8ef">
+            <h2 style="margin:0;font-size:17px">Account activity</h2>
+            <select aria-label="Show" style="min-height:40px;padding:0 10px;border:1px solid #cdd5e0;border-radius:8px;font:14px 'Source Sans 3',sans-serif;background:#fff"><option>Everything</option><option>Deposits</option><option>Charges</option><option>Commissary purchases</option><option>Holds</option></select>
+          </div>
+          <table>
+            <thead><tr><th>When</th><th>What</th><th style="text-align:right">Amount</th><th style="text-align:right">Balance</th><th>By</th><th></th></tr></thead>
+            <tbody>
+              <tr><td>Today 7:48 AM</td><td><span class="chip warn">Check, on hold</span> Payroll check #2211, Tyson Foods<br><span style="color:#5a6779;font-size:13px">Hold until 10/23, receipt #10483</span></td><td style="text-align:right">$50.00</td><td style="text-align:right">$43.00</td><td>Ramirez</td><td><a class="btn s" href="OfficerFix.html">Fix</a></td></tr>
+              <tr><td>Today 7:45 AM</td><td><span class="chip ok">Cash deposit</span> Booking cash<br><span style="color:#5a6779;font-size:13px">Receipt #10481</span></td><td style="text-align:right">$43.00</td><td style="text-align:right">$43.00</td><td>Ramirez</td><td><a class="btn s" href="OfficerFix.html">Fix</a></td></tr>
+              <tr><td>Today 6:30 AM</td><td><span class="chip bad">Charge</span> Medical visit, nurse sick call<br><span style="color:#5a6779;font-size:13px">Unpaid; collected from next deposit</span></td><td style="text-align:right;color:#9f1d12">-$8.00</td><td style="text-align:right">$0.00</td><td>Ramirez</td><td><a class="btn s" href="OfficerFix.html">Fix</a></td></tr>
+              <tr><td>Today 7:40 AM</td><td><span class="chip off">Account opened</span> From JMS booking feed</td><td style="text-align:right"></td><td style="text-align:right">$0.00</td><td>System</td><td></td></tr>
+            </tbody>
+          </table>
+          <div style="padding:12px 16px;color:#5a6779;font-size:14px">Showing all 4 entries. Amounts in red are money the inmate owes or spent.</div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:16px">
+          <div class="card" style="padding:16px">
+            <h2 style="margin:0 0 10px;font-size:15px">Card on file</h2>
+            <div style="display:flex;align-items:center;gap:12px;font-size:15px">
+              <div style="width:44px;height:30px;border-radius:6px;background:#1b2538;color:#fff;font-size:11px;display:flex;align-items:center;justify-content:center">VISA</div>
+              <div>Visa ending 4417<br><span style="color:#5a6779;font-size:13px">Saved at booking for phone deposits</span></div>
+            </div>
+            <div style="display:flex;gap:8px;margin-top:12px"><button class="btn s" type="button">Add a card</button><button class="btn s" type="button">Remove</button></div>
+          </div>
+          <div class="card" style="padding:16px">
+            <h2 style="margin:0 0 10px;font-size:15px">Details</h2>
+            <dl class="kv">
+              <dt>Account</dt><dd>0000042262</dd>
+              <dt>Held for</dt><dd>Atoka County</dd>
+              <dt>Privilege</dt><dd>Normal</dd>
+              <dt>Last order</dt><dd>None yet</dd>
+            </dl>
+            <a href="#jms" style="display:inline-block;margin-top:10px;font-size:14px">Open in JMS</a>
+          </div>
+          <div class="card" style="padding:16px">
+            <h2 style="margin:0 0 10px;font-size:15px">Notes for staff</h2>
+            <label for="note" style="position:absolute;left:-9999px">Note</label>
+            <textarea id="note" rows="3" placeholder="Add a note other officers will see" style="width:100%;box-sizing:border-box;border:1px solid #cdd5e0;border-radius:8px;padding:8px;font:14px 'Source Sans 3',sans-serif"></textarea>
+            <button class="btn s" type="button" style="margin-top:8px">Save note</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+
+</body>
+</html>

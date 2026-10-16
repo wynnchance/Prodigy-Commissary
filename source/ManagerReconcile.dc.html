@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Manager Monthly Reconciliation</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap">
+<style>
+body{margin:0;font-family:'Source Sans 3',system-ui,sans-serif;color:#1b2538;background:#f4f6f9}
+a{color:#1b5fb4}a:hover{color:#0f3f7d}
+.nav a{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:8px;color:#c7d0dd;text-decoration:none;font-size:15px;min-height:44px;box-sizing:border-box}
+.nav a:hover{background:#2a3650;color:#fff}
+.nav a.on{background:#1b5fb4;color:#fff;font-weight:600}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 16px;border-radius:8px;border:1px solid #cdd5e0;background:#fff;color:#1b2538;font:600 15px 'Source Sans 3',sans-serif;cursor:pointer;text-decoration:none}
+.btn.p{background:#1b5fb4;border-color:#1b5fb4;color:#fff}
+.btn.s{min-height:36px;padding:0 12px;font-size:14px}
+.card{background:#fff;border:1px solid #e3e8ef;border-radius:12px}
+.chip{display:inline-block;padding:2px 10px;border-radius:999px;font-size:13px;font-weight:600}
+.ok{background:#dcf5e6;color:#166534}.warn{background:#fff1d6;color:#8a4b00}.bad{background:#fde4e1;color:#9f1d12}
+.row{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;border-bottom:1px solid #eef1f5;font-size:15px;gap:12px}
+.row b{font-size:17px}
+.sub{color:#5a6779;font-size:13px}
+.f{display:flex;flex-direction:column;gap:6px;font-size:14px;color:#5a6779}
+.f input{min-height:44px;padding:0 12px;border:1px solid #cdd5e0;border-radius:8px;font:17px 'Source Sans 3',sans-serif;background:#fff;color:#1b2538}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th{text-align:left;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#5a6779;padding:8px 12px;border-bottom:1px solid #e3e8ef}
+td{padding:8px 12px;border-bottom:1px solid #eef1f5}
+</style>
+</helmet>
+<div style="display:flex;flex-wrap:wrap;min-height:980px">
+  <nav class="nav" style="width:236px;background:#1b2538;padding:16px 12px;box-sizing:border-box;display:flex;flex-direction:column">
+    <div style="display:flex;align-items:center;gap:10px;padding:4px 12px 4px;color:#fff;font-weight:700;font-size:18px">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#5aa9ff" stroke-width="2" aria-hidden="true"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 12l9 4 9-4"/><path d="M3 17l9 4 9-4"/></svg>
+      Commissary
+    </div>
+    <div style="padding:0 12px 14px;color:#7b889c;font-size:13px">Atoka County Jail</div>
+    <a href="ManagerHome.dc.html">Today</a>
+    <a href="OfficerInmate.dc.html">Inmates</a>
+    <a href="ManagerDrawer.dc.html">Drawer</a>
+    <a href="ManagerBankDeposit.dc.html">Bank deposits</a>
+    <a href="ManagerRelease.dc.html">Releases</a>
+    <a href="ManagerOrders.dc.html">Orders</a>
+    <a href="ManagerReconcile.dc.html" class="on">Reconcile</a>
+    <a href="#reports">Reports</a>
+    <div style="flex:1"></div>
+    <div style="border-top:1px solid #2a3650;padding:12px;color:#c7d0dd;font-size:14px">Donna Pruitt<br><span style="color:#7b889c">Commissary Manager</span></div>
+    <a href="#logout" style="min-height:40px">Log out</a>
+  </nav>
+
+  <main style="flex:999 1 560px;min-width:0;display:flex;flex-direction:column">
+    <header style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;padding:14px 28px;background:#fff;border-bottom:1px solid #e3e8ef">
+      <div style="font-size:14px;color:#5a6779"><a href="ManagerHome.dc.html">Today</a> / Reconcile</div>
+      <div style="flex:1"></div>
+      <div style="font-weight:700">Atoka County Jail</div>
+    </header>
+
+    <div style="padding:24px 28px;display:flex;flex-direction:column;gap:20px">
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;align-items:flex-end">
+        <div>
+          <h1 style="margin:0;font-size:26px">Reconcile the Inmate Trust Fund for September 2026</h1>
+          <div style="color:#5a6779;font-size:15px;margin-top:4px">Does the money in the bank equal what the inmates are owed? Enter the bank statement balance and the page does the rest.</div>
+        </div>
+        <div style="display:flex;gap:10px;align-items:center"><select aria-label="Month" style="min-height:44px;padding:0 12px;border:1px solid #cdd5e0;border-radius:8px;font:15px 'Source Sans 3',sans-serif;background:#fff"><option>September 2026</option><option>August 2026 (reconciled)</option><option>July 2026 (reconciled)</option></select><a class="btn" href="#print">Print reconciliation</a></div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(2, minmax(0, 1fr));gap:20px;align-items:start">
+        <div class="card" style="overflow:hidden">
+          <div style="padding:14px 16px;border-bottom:1px solid #e3e8ef"><h2 style="margin:0;font-size:17px">Bank side</h2></div>
+          <div style="padding:16px;display:flex;flex-direction:column;gap:12px;border-bottom:1px solid #eef1f5">
+            <label class="f">Ending balance on the bank statement, 09/30/2026<input type="text" value="$14,962.41"></label>
+            <div style="display:flex;gap:8px"><button class="btn s" type="button">Import statement (CSV or PDF)</button><button class="btn s" type="button">Attach statement</button></div>
+          </div>
+          <div class="row"><span>Plus deposits made but not yet on the statement<br><span class="sub">Deposit of 09/30, $412.00</span></span><b>+ $412.00</b></div>
+          <div class="row"><span>Less checks written but not yet cashed<br><span class="sub">4 checks. <a href="#oc">See list</a></span></span><b>- $1,116.25</b></div>
+          <div class="row" style="background:#f9fafc;border-bottom:0"><span><strong>Adjusted bank balance</strong></span><b>$14,258.16</b></div>
+        </div>
+
+        <div class="card" style="overflow:hidden">
+          <div style="padding:14px 16px;border-bottom:1px solid #e3e8ef"><h2 style="margin:0;font-size:17px">Book side (what the inmates are owed)</h2></div>
+          <div class="row"><span>All inmate balances on 09/30<br><span class="sub">41 accounts open at month end</span></span><b>$13,978.16</b></div>
+          <div class="row"><span>Funds on hold (checks not yet cleared)</span><b>+ $230.00</b></div>
+          <div class="row"><span>Commissary purchases not yet transferred out<br><span class="sub">Owed to the Sheriff's Commissary Account</span></span><b>+ $0.00</b></div>
+          <div class="row"><span>Released balances not yet paid out</span><b>+ $50.00</b></div>
+          <div class="row" style="background:#f9fafc;border-bottom:0"><span><strong>Total owed</strong></span><b>$14,258.16</b></div>
+        </div>
+      </div>
+
+      <div class="card" style="padding:18px;display:flex;flex-wrap:wrap;gap:16px;align-items:center;border:2px solid #166534;background:#f3fbf6">
+        <div style="flex:1 1 320px"><div style="font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#166534;font-weight:700">Difference</div><div style="font-size:34px;font-weight:700">$0.00</div><div style="color:#166534;font-size:15px">The bank and the books agree for September.</div></div>
+        <div style="flex:1 1 320px;font-size:14px;color:#5a6779">If there were a difference, it would show here with the most likely causes: a deposit recorded on the wrong day, a check cashed for a different amount, or a fix posted after the bank deposit. Each one links to the receipt.</div>
+        <div style="display:flex;gap:10px"><button class="btn p" type="button">Sign off September</button></div>
+      </div>
+
+      <div class="card" style="overflow:hidden">
+        <div style="padding:14px 16px;border-bottom:1px solid #e3e8ef;display:flex;justify-content:space-between;align-items:center"><h2 style="margin:0;font-size:17px">Checks not yet cashed</h2><span class="chip warn">1 older than 90 days</span></div>
+        <table>
+          <thead><tr><th>Check</th><th>Date</th><th>Paid to</th><th>Reason</th><th style="text-align:right">Amount</th><th>Age</th><th></th></tr></thead>
+          <tbody>
+            <tr><td>#1192</td><td>07/13/2026</td><td>WEBB, TRAVIS L</td><td>Release</td><td style="text-align:right">$84.00</td><td><span class="chip warn">95 days</span></td><td><a href="#f" style="font-size:14px">Follow up</a> <span style="color:#cdd5e0">|</span> <a href="#u" style="font-size:14px">Mark unclaimed</a></td></tr>
+            <tr><td>#1218</td><td>09/22/2026</td><td>Oklahoma DOC</td><td>Transfer with inmate</td><td style="text-align:right">$612.25</td><td>24 days</td><td></td></tr>
+            <tr><td>#1221</td><td>09/27/2026</td><td>GARZA, MARIA</td><td>Release</td><td style="text-align:right">$320.00</td><td>19 days</td><td></td></tr>
+            <tr><td>#1223</td><td>09/30/2026</td><td>Craig County Jail</td><td>Transfer with inmate</td><td style="text-align:right">$100.00</td><td>16 days</td><td></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":980}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

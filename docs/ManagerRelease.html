@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Manager Releases</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap">
+<style>
+body{margin:0;font-family:'Source Sans 3',system-ui,sans-serif;color:#1b2538;background:#f4f6f9}
+a{color:#1b5fb4}a:hover{color:#0f3f7d}
+.nav a{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:8px;color:#c7d0dd;text-decoration:none;font-size:15px;min-height:44px;box-sizing:border-box}
+.nav a:hover{background:#2a3650;color:#fff}
+.nav a.on{background:#1b5fb4;color:#fff;font-weight:600}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 16px;border-radius:8px;border:1px solid #cdd5e0;background:#fff;color:#1b2538;font:600 15px 'Source Sans 3',sans-serif;cursor:pointer;text-decoration:none}
+.btn.p{background:#1b5fb4;border-color:#1b5fb4;color:#fff}
+.btn.s{min-height:36px;padding:0 12px;font-size:14px}
+.card{background:#fff;border:1px solid #e3e8ef;border-radius:12px}
+.chip{display:inline-block;padding:2px 10px;border-radius:999px;font-size:13px;font-weight:600}
+.ok{background:#dcf5e6;color:#166534}.warn{background:#fff1d6;color:#8a4b00}.off{background:#e8ecf2;color:#4a5668}.bad{background:#fde4e1;color:#9f1d12}
+table{border-collapse:collapse;width:100%;font-size:15px}
+th{text-align:left;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#5a6779;padding:10px 12px;border-bottom:1px solid #e3e8ef}
+td{padding:11px 12px;border-bottom:1px solid #eef1f5;vertical-align:middle}
+tr.sel td{background:#e3eefc}
+.opt{display:flex;gap:12px;align-items:flex-start;padding:12px;border:2px solid #cdd5e0;border-radius:10px;cursor:pointer;font-size:15px}
+.opt.on{border-color:#1b5fb4;background:#e3eefc}
+.opt input{width:20px;height:20px;margin:2px 0 0}
+.opt small{display:block;color:#5a6779;font-size:13px}
+.f{display:flex;flex-direction:column;gap:6px;font-size:14px;color:#5a6779}
+.f input{min-height:44px;padding:0 12px;border:1px solid #cdd5e0;border-radius:8px;font:15px 'Source Sans 3',sans-serif;background:#fff;color:#1b2538}
+.help{font-size:13px;color:#5a6779}
+</style>
+</head>
+<body>
+
+
+<div style="display:flex;flex-wrap:wrap;min-height:980px">
+  <nav class="nav" style="width:236px;background:#1b2538;padding:16px 12px;box-sizing:border-box;display:flex;flex-direction:column">
+    <div style="display:flex;align-items:center;gap:10px;padding:4px 12px 4px;color:#fff;font-weight:700;font-size:18px">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#5aa9ff" stroke-width="2" aria-hidden="true"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 12l9 4 9-4"/><path d="M3 17l9 4 9-4"/></svg>
+      Commissary
+    </div>
+    <div style="padding:0 12px 14px;color:#7b889c;font-size:13px">Atoka County Jail</div>
+    <a href="ManagerHome.html">Today</a>
+    <a href="OfficerInmate.html">Inmates</a>
+    <a href="ManagerDrawer.html">Drawer</a>
+    <a href="ManagerBankDeposit.html">Bank deposits</a>
+    <a href="ManagerRelease.html" class="on">Releases</a>
+    <a href="ManagerOrders.html">Orders</a>
+    <a href="ManagerReconcile.html">Reconcile</a>
+    <a href="#reports">Reports</a>
+    <div style="flex:1"></div>
+    <div style="border-top:1px solid #2a3650;padding:12px;color:#c7d0dd;font-size:14px">Donna Pruitt<br><span style="color:#7b889c">Commissary Manager</span></div>
+    <a href="#logout" style="min-height:40px">Log out</a>
+  </nav>
+
+  <main style="flex:999 1 560px;min-width:0;display:flex;flex-direction:column">
+    <header style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;padding:14px 28px;background:#fff;border-bottom:1px solid #e3e8ef">
+      <div style="font-size:14px;color:#5a6779"><a href="ManagerHome.html">Today</a> / Releases</div>
+      <div style="flex:1"></div>
+      <div style="font-weight:700">Atoka County Jail</div>
+    </header>
+
+    <div style="padding:24px 28px;display:flex;flex-direction:column;gap:20px">
+      <div>
+        <h1 style="margin:0;font-size:26px">Released inmates with money on account</h1>
+        <div style="color:#5a6779;font-size:15px;margin-top:4px">From the JMS release feed. An account closes only after the funds are paid out and the release form is marked signed.</div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(5, minmax(0, 1fr));gap:20px;align-items:start">
+        <div class="card" style="grid-column:span 3;overflow:hidden">
+          <div style="padding:14px 16px;border-bottom:1px solid #e3e8ef;display:flex;justify-content:space-between;align-items:center"><h2 style="margin:0;font-size:17px">Waiting to be paid out</h2><span style="color:#5a6779;font-size:14px">3 inmates, $392.95</span></div>
+          <table>
+            <thead><tr><th>Inmate</th><th>Released</th><th>Going to</th><th style="text-align:right">Owed to inmate</th><th></th></tr></thead>
+            <tbody>
+              <tr class="sel"><td><strong>GARZA, MARIA E</strong><br><span style="color:#5a6779;font-size:13px">Booking 0000041902</span></td><td>Today 9:10 AM</td><td>Home (bonded out)</td><td style="text-align:right"><strong>$345.00</strong><br><span style="color:#8a4b00;font-size:13px">$25.00 of it on hold</span></td><td><span class="chip warn">Selected</span></td></tr>
+              <tr><td><strong>WEBB, TRAVIS L</strong><br><span style="color:#5a6779;font-size:13px">Booking 0000041877</span></td><td>Yesterday 4:30 PM</td><td>Oklahoma DOC, Lexington</td><td style="text-align:right">$41.75</td><td><a class="btn s" href="#w">Pay out</a></td></tr>
+              <tr><td><strong>PRICE, JORDAN</strong><br><span style="color:#5a6779;font-size:13px">Booking 0000041850</span></td><td>10/14 11:00 AM</td><td>Home (time served)</td><td style="text-align:right">$6.20</td><td><a class="btn s" href="#p">Pay out</a></td></tr>
+            </tbody>
+          </table>
+          <div style="padding:12px 16px;border-top:1px solid #e3e8ef;display:flex;justify-content:space-between;align-items:center;font-size:14px"><span style="color:#5a6779">Inmates who owe the jail at release are listed under <a href="#debts">Unpaid charges at release</a> (2 this week, $19.00).</span><a href="#history">Release history</a></div>
+        </div>
+
+        <div class="card" style="grid-column:span 2;padding:18px;display:flex;flex-direction:column;gap:14px">
+          <div>
+            <div style="font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#5a6779;font-weight:700">Pay out</div>
+            <h2 style="margin:4px 0 0;font-size:20px">GARZA, MARIA E</h2>
+            <div class="help">$345.00 on account. $25.00 is a check hold until 10/20.</div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <label class="opt on"><input type="radio" name="pay" checked><span><strong>Debit card, $320.00 now</strong><small>Loaded at the window. The $25.00 hold is paid by check when it clears, or release the hold now.</small></span></label>
+            <label class="opt"><input type="radio" name="pay"><span><strong>Check</strong><small>Printed now, two signatures required.</small></span></label>
+            <label class="opt"><input type="radio" name="pay"><span><strong>Cash from the drawer</strong><small>Only if your facility allows cash releases.</small></span></label>
+            <label class="opt"><input type="radio" name="pay"><span><strong>Transfer to receiving agency</strong><small>For transfers; check made out to the agency.</small></span></label>
+          </div>
+          <label style="display:flex;gap:10px;align-items:center;font-size:15px"><input type="checkbox" style="width:20px;height:20px"><span>Release the $25.00 hold early and include it</span></label>
+          <div style="padding:12px;border-radius:8px;background:#f9fafc;border:1px solid #e3e8ef;font-size:14px">
+            <strong>Release form</strong> prints with the amount, method, and card or check number. The inmate signs it; you mark it signed below. The account closes at that point.
+          </div>
+          <label style="display:flex;gap:10px;align-items:center;font-size:15px"><input type="checkbox" style="width:20px;height:20px"><span>Inmate signed the release form</span></label>
+          <div style="display:flex;gap:10px;justify-content:flex-end">
+            <button class="btn" type="button">Print release form</button>
+            <button class="btn p" type="button">Pay out and close account</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="overflow:hidden">
+        <div style="padding:14px 16px;border-bottom:1px solid #e3e8ef;display:flex;justify-content:space-between;align-items:center"><h2 style="margin:0;font-size:17px">Unclaimed funds</h2><span class="help">Uncashed release checks and closed accounts with leftover balances</span></div>
+        <table>
+          <thead><tr><th>Who</th><th>What</th><th style="text-align:right">Amount</th><th>Age</th><th>Next step</th></tr></thead>
+          <tbody>
+            <tr><td>WEBB, TRAVIS L</td><td>Release check #1192 never cashed</td><td style="text-align:right">$84.00</td><td><span class="chip warn">95 days</span></td><td><a href="#l" style="font-size:14px">Send letter to last address</a></td></tr>
+            <tr><td>NGUYEN, PAUL</td><td>Closed with balance, no forwarding address</td><td style="text-align:right">$3.15</td><td>210 days</td><td><a href="#e" style="font-size:14px">Add to unclaimed property filing</a></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Manager Drawer Count</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap">
+<style>
+body{margin:0;font-family:'Source Sans 3',system-ui,sans-serif;color:#1b2538;background:#f4f6f9}
+a{color:#1b5fb4}a:hover{color:#0f3f7d}
+.nav a{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:8px;color:#c7d0dd;text-decoration:none;font-size:15px;min-height:44px;box-sizing:border-box}
+.nav a:hover{background:#2a3650;color:#fff}
+.nav a.on{background:#1b5fb4;color:#fff;font-weight:600}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 16px;border-radius:8px;border:1px solid #cdd5e0;background:#fff;color:#1b2538;font:600 15px 'Source Sans 3',sans-serif;cursor:pointer;text-decoration:none}
+.btn.p{background:#1b5fb4;border-color:#1b5fb4;color:#fff}
+.card{background:#fff;border:1px solid #e3e8ef;border-radius:12px}
+.chip{display:inline-block;padding:2px 10px;border-radius:999px;font-size:13px;font-weight:600}
+.ok{background:#dcf5e6;color:#166534}.warn{background:#fff1d6;color:#8a4b00}.bad{background:#fde4e1;color:#9f1d12}
+table{border-collapse:collapse;width:100%;font-size:15px}
+th{text-align:left;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#5a6779;padding:10px 12px;border-bottom:1px solid #e3e8ef}
+td{padding:9px 12px;border-bottom:1px solid #eef1f5;vertical-align:middle}
+td input{width:80px;min-height:40px;padding:0 10px;border:1px solid #cdd5e0;border-radius:8px;font:16px 'Source Sans 3',sans-serif;text-align:right}
+.f{display:flex;flex-direction:column;gap:6px;font-size:14px;color:#5a6779}
+.f input,.f textarea,.f select{min-height:44px;padding:0 12px;border:1px solid #cdd5e0;border-radius:8px;font:15px 'Source Sans 3',sans-serif;background:#fff;color:#1b2538}
+.f textarea{padding:10px 12px}
+.help{font-size:13px;color:#5a6779}
+</style>
+</helmet>
+<div style="display:flex;flex-wrap:wrap;min-height:900px">
+  <nav class="nav" style="width:236px;background:#1b2538;padding:16px 12px;box-sizing:border-box;display:flex;flex-direction:column">
+    <div style="display:flex;align-items:center;gap:10px;padding:4px 12px 4px;color:#fff;font-weight:700;font-size:18px">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#5aa9ff" stroke-width="2" aria-hidden="true"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 12l9 4 9-4"/><path d="M3 17l9 4 9-4"/></svg>
+      Commissary
+    </div>
+    <div style="padding:0 12px 14px;color:#7b889c;font-size:13px">Atoka County Jail</div>
+    <a href="ManagerHome.dc.html">Today</a>
+    <a href="OfficerInmate.dc.html">Inmates</a>
+    <a href="ManagerDrawer.dc.html" class="on">Drawer</a>
+    <a href="ManagerBankDeposit.dc.html">Bank deposits</a>
+    <a href="ManagerRelease.dc.html">Releases</a>
+    <a href="ManagerOrders.dc.html">Orders</a>
+    <a href="ManagerReconcile.dc.html">Reconcile</a>
+    <a href="#reports">Reports</a>
+    <div style="flex:1"></div>
+    <div style="border-top:1px solid #2a3650;padding:12px;color:#c7d0dd;font-size:14px">Donna Pruitt<br><span style="color:#7b889c">Commissary Manager</span></div>
+    <a href="#logout" style="min-height:40px">Log out</a>
+  </nav>
+
+  <main style="flex:999 1 560px;min-width:0;display:flex;flex-direction:column">
+    <header style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;padding:14px 28px;background:#fff;border-bottom:1px solid #e3e8ef">
+      <div style="font-size:14px;color:#5a6779"><a href="ManagerHome.dc.html">Today</a> / Count the drawer</div>
+      <div style="flex:1"></div>
+      <div style="font-weight:700">Atoka County Jail</div>
+    </header>
+
+    <div style="padding:24px 28px;display:flex;flex-wrap:wrap;gap:24px;align-items:flex-start">
+      <div style="flex:1 1 520px;min-width:0;max-width:720px;display:flex;flex-direction:column;gap:16px">
+        <div>
+          <h1 style="margin:0;font-size:26px">Count the booking drawer</h1>
+          <div style="color:#5a6779;font-size:15px;margin-top:4px">Step 2 of 5. Count what is in the drawer and enter it below. The system already knows what it should be.</div>
+        </div>
+        <div class="card" style="overflow:hidden">
+          <table>
+            <thead><tr><th>Denomination</th><th style="text-align:right">Count</th><th style="text-align:right">Amount</th></tr></thead>
+            <tbody>
+              <tr><td>$100</td><td style="text-align:right"><input type="text" value="1"></td><td style="text-align:right">$100.00</td></tr>
+              <tr><td>$50</td><td style="text-align:right"><input type="text" value="1"></td><td style="text-align:right">$50.00</td></tr>
+              <tr><td>$20</td><td style="text-align:right"><input type="text" value="8"></td><td style="text-align:right">$160.00</td></tr>
+              <tr><td>$10</td><td style="text-align:right"><input type="text" value="4"></td><td style="text-align:right">$40.00</td></tr>
+              <tr><td>$5</td><td style="text-align:right"><input type="text" value="3"></td><td style="text-align:right">$15.00</td></tr>
+              <tr><td>$1</td><td style="text-align:right"><input type="text" value="15"></td><td style="text-align:right">$15.00</td></tr>
+              <tr><td>Coins</td><td style="text-align:right"><input type="text" value="0.00"></td><td style="text-align:right">$0.00</td></tr>
+              <tr style="font-weight:700;background:#f9fafc"><td>Counted</td><td></td><td style="text-align:right;font-size:18px">$380.00</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div style="flex:1 1 360px;max-width:460px;display:flex;flex-direction:column;gap:16px">
+        <div class="card" style="padding:18px;display:flex;flex-direction:column;gap:12px">
+          <h2 style="margin:0;font-size:16px">Does it match?</h2>
+          <div style="display:flex;justify-content:space-between;font-size:15px"><span>System expects (cash received today, less cash paid out)</span><strong>$385.00</strong></div>
+          <div style="display:flex;justify-content:space-between;font-size:15px"><span>You counted</span><strong>$380.00</strong></div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:12px;border-radius:8px;background:#fde4e1;font-size:16px"><span><strong>Short by $5.00</strong></span><span class="chip bad">Over/Short</span></div>
+          <label class="f">What happened? (required when there is a difference)<textarea rows="2">Likely change given back on receipt #10479; checking with Ofc. Ramirez.</textarea></label>
+          <div class="help">Recount first if you can. A difference of any size is posted to Over/Short with this note, and it shows on the daily summary and the audit log.</div>
+        </div>
+        <div class="card" style="padding:18px;display:flex;flex-direction:column;gap:12px">
+          <h2 style="margin:0;font-size:16px">Who counted, who verified</h2>
+          <div style="display:grid;grid-template-columns:repeat(2, minmax(0, 1fr));gap:12px">
+            <label class="f">Counted by<input type="text" value="Donna Pruitt" readonly></label>
+            <label class="f">Verified by<select><option>Choose a second person</option><option>Sgt. T. Boyd</option><option>Ofc. J. Ramirez</option><option>Capt. R. Hale</option></select></label>
+          </div>
+          <div class="help">Auditors expect two people on every count. The verifier confirms on their own login or by entering their PIN here.</div>
+        </div>
+        <div style="display:flex;gap:10px;justify-content:flex-end">
+          <a class="btn" href="ManagerHome.dc.html">Save for later</a>
+          <a class="btn p" href="ManagerBankDeposit.dc.html">Record count and continue to deposit</a>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":900}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

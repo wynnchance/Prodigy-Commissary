@@ -1,0 +1,34 @@
+{
+  "v": 3,
+  "createdOnFiles": {"v": 1, "at": "2026-10-16T14:45:00Z"},
+  "title": "Prodigy Commissary Admin Redesign",
+  "launch": {"view": "canvas"},
+  "pages": [],
+  "boards": {
+    "Main.dc.html": {"x": 0, "y": 0, "w": 1440, "h": 980, "title": "Prodigy view: shell + dashboard", "expand": "fill"},
+    "Resident.dc.html": {"x": 1520, "y": 0, "w": 1440, "h": 1120, "title": "Prodigy view: resident account", "expand": "fill"},
+    "Facility.dc.html": {"x": 3040, "y": 0, "w": 1440, "h": 1040, "title": "Prodigy view: facility settings", "expand": "fill"},
+    "OfficerHome.dc.html": {"x": 0, "y": 2300, "w": 1440, "h": 900, "title": "Officer 1: Home", "expand": "fill"},
+    "OfficerInmate.dc.html": {"x": 1520, "y": 2300, "w": 1440, "h": 1040, "title": "Officer 2: Inmate account", "expand": "fill"},
+    "OfficerDeposit.dc.html": {"x": 3040, "y": 2300, "w": 1440, "h": 900, "title": "Officer 3: Deposit", "expand": "fill", "is_interactive": true},
+    "OfficerFix.dc.html": {"x": 4560, "y": 2300, "w": 1440, "h": 1040, "title": "Officer 4: Bill and Fix dialogs", "expand": "fill"},
+    "OfficerNewInmate.dc.html": {"x": 6080, "y": 2300, "w": 1440, "h": 900, "title": "Officer 5: New inmate", "expand": "fill"},
+    "ManagerHome.dc.html": {"x": 0, "y": 3900, "w": 1440, "h": 980, "title": "Manager 1: Daily close-out", "expand": "fill"},
+    "ManagerDrawer.dc.html": {"x": 1520, "y": 3900, "w": 1440, "h": 900, "title": "Manager 2: Count the drawer", "expand": "fill"},
+    "ManagerBankDeposit.dc.html": {"x": 3040, "y": 3900, "w": 1440, "h": 980, "title": "Manager 3: Bank deposit", "expand": "fill"},
+    "ManagerReconcile.dc.html": {"x": 4560, "y": 3900, "w": 1440, "h": 980, "title": "Manager 4: Monthly reconciliation", "expand": "fill"},
+    "ManagerRelease.dc.html": {"x": 6080, "y": 3900, "w": 1440, "h": 980, "title": "Manager 5: Releases", "expand": "fill"},
+    "ManagerOrders.dc.html": {"x": 7600, "y": 3900, "w": 1440, "h": 980, "title": "Manager 6: Orders and commissary transfer", "expand": "fill"}
+  },
+  "order": ["Main.dc.html", "Resident.dc.html", "Facility.dc.html", "OfficerHome.dc.html", "OfficerInmate.dc.html", "OfficerDeposit.dc.html", "OfficerFix.dc.html", "OfficerNewInmate.dc.html", "ManagerHome.dc.html", "ManagerDrawer.dc.html", "ManagerBankDeposit.dc.html", "ManagerReconcile.dc.html", "ManagerRelease.dc.html", "ManagerOrders.dc.html"],
+  "notes": {
+    "t1": {"x": 0, "y": -320, "text": "Prodigy Commissary Admin: usability redesign", "kind": "title1", "maxW": 4480},
+    "n1": {"x": 0, "y": 1120, "w": 440, "fill": "orange", "text": "What is confusing today\n\n1. Sidebar is a flat list of 10 groups with no icons; 'Search' appears under Facilities, Residents, Rules, Funds and Cash Drawers, so the same word means five things.\n2. No home page: login lands on Release Notes.\n3. Facility page is one 7-screen scroll: address, limits, taxes, debit cards, schedules, locations, class codes, products and packs all stacked.\n4. Resident page shows balance but no visible way to deposit, withdraw or adjust.\n5. Icon-only actions (eye, pencil, print, sliders) with no labels or tooltips.\n6. Resident table overflows sideways even at 1536px.\n7. Products, Packs, Attributes, Categories, Tags and Class Codes are six separate top-level pages."},
+    "n2": {"x": 1520, "y": 1260, "w": 440, "fill": "green", "text": "Design moves\n\n- Group nav by job: Operate (Residents, Orders, Finances), Catalog (Products and sub-areas), Setup (Facilities, Rules, Admins, Warehouses).\n- Global search bar in the header finds a resident, facility, item or order from anywhere.\n- Facility selector in the header filters every list.\n- Primary actions are labeled buttons, not icons.\n- Long settings pages become section tabs with a sticky jump list.\n- Status is shown as colored chips, not Yes/No text."},
+    "t2": {"x": 0, "y": 1980, "text": "Detention Officer view", "kind": "title1", "maxW": 7520},
+    "t3": {"x": 0, "y": 3580, "text": "Commissary Manager view", "kind": "title1", "maxW": 9040},
+    "n4": {"x": 4560, "y": 1260, "w": 440, "fill": "purple", "text": "Manager view rules (from the roles plan)\n\n- Home page is the daily close-out checklist: count drawer, bank deposit, releases, orders, then reconcile monthly.\n- The county holds the trust fund bank account, so the bank deposit step documents the deposit and prints the slip; it does not move money.\n- Drawer count records who counted and who verified. Over/Short needs a note.\n- Releases pay out only after the release form is marked signed.\n- Commissary transfer shows the running amount due and the sales report behind it.\n- Each audit test from the Craig County OK and Burnet County TX reports maps to a step here."},
+    "n3": {"x": 3040, "y": 1260, "w": 440, "fill": "blue", "text": "Officer view rules (from the roles plan)\n\n- One facility, fixed in the header. No facility picker.\n- Four jobs on the home page: Find inmate, New inmate, Deposit, Bill inmate.\n- Deposit asks one question: what was received? Cash, check or money order, card. No ledger accounts, no source or destination medium.\n- Check holds: no default length, officer sets it, Manager can release early.\n- Every money transaction has a Fix button; options depend on type. Fixes post a reversing entry and print a corrected receipt.\n- Approval thresholds are off unless the Jail Administrator turns them on."}
+  },
+  "designSystems": []
+}

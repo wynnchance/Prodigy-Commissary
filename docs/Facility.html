@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Facility Settings</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap">
+<style>
+body{margin:0;font-family:'Source Sans 3',system-ui,sans-serif;color:#1b2538;background:#f4f6f9}
+a{color:#1b5fb4}a:hover{color:#0f3f7d}
+.nav a{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:8px;color:#c7d0dd;text-decoration:none;font-size:15px;min-height:44px;box-sizing:border-box}
+.nav a:hover{background:#2a3650;color:#fff}
+.nav a.on{background:#1b5fb4;color:#fff;font-weight:600}
+.navh{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#7b889c;padding:16px 12px 6px;font-weight:700}
+.btn{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px;border-radius:8px;border:1px solid #cdd5e0;background:#fff;color:#1b2538;font:600 15px 'Source Sans 3',sans-serif;cursor:pointer;text-decoration:none}
+.btn.p{background:#1b5fb4;border-color:#1b5fb4;color:#fff}
+.sec a{display:block;padding:10px 12px;border-radius:8px;color:#1b2538;text-decoration:none;font-size:15px;min-height:44px;box-sizing:border-box;display:flex;align-items:center;justify-content:space-between}
+.sec a:hover{background:#e8ecf2}
+.sec a.on{background:#e3eefc;color:#1b5fb4;font-weight:600}
+.chip{display:inline-block;padding:2px 10px;border-radius:999px;font-size:13px;font-weight:600}
+.ok{background:#dcf5e6;color:#166534}.warn{background:#fff1d6;color:#8a4b00}.off{background:#e8ecf2;color:#4a5668}
+.card{background:#fff;border:1px solid #e3e8ef;border-radius:12px}
+.f{display:flex;flex-direction:column;gap:6px;font-size:14px;color:#5a6779}
+.f input,.f select{min-height:44px;padding:0 12px;border:1px solid #cdd5e0;border-radius:8px;font:15px 'Source Sans 3',sans-serif;background:#fff;color:#1b2538}
+.help{font-size:13px;color:#5a6779}
+table{border-collapse:collapse;width:100%;font-size:15px}
+th{text-align:left;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#5a6779;padding:10px 12px;border-bottom:1px solid #e3e8ef}
+td{padding:12px;border-bottom:1px solid #eef1f5;vertical-align:middle}
+</style>
+</head>
+<body>
+
+
+<div style="display:flex;flex-wrap:wrap;min-height:1040px">
+  <nav class="nav" style="width:236px;background:#1b2538;padding:16px 12px;box-sizing:border-box;display:flex;flex-direction:column">
+    <div style="display:flex;align-items:center;gap:10px;padding:4px 12px 12px;color:#fff;font-weight:700;font-size:18px">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#5aa9ff" stroke-width="2" aria-hidden="true"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 12l9 4 9-4"/><path d="M3 17l9 4 9-4"/></svg>
+      Prodigy Admin
+    </div>
+    <a href="Main.html">Home</a>
+    <div class="navh">Operate</div>
+    <a href="Resident.html">Residents</a>
+    <a href="#orders">Orders &amp; Batches</a>
+    <a href="#finances">Finances</a>
+    <a href="#reports">Reports</a>
+    <div class="navh">Catalog</div>
+    <a href="#products">Products</a>
+    <a href="#warehouses">Warehouses</a>
+    <div class="navh">Setup</div>
+    <a href="Facility.html" class="on">Facilities</a>
+    <a href="#rules">Rules</a>
+    <a href="#customers">Customers</a>
+    <a href="#admins">Admins &amp; Settings</a>
+  </nav>
+
+  <main style="flex:999 1 560px;min-width:0;display:flex;flex-direction:column">
+    <header style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;padding:14px 28px;background:#fff;border-bottom:1px solid #e3e8ef">
+      <label for="gsearch3" style="position:absolute;left:-9999px">Search everything</label>
+      <input id="gsearch3" type="search" placeholder="Search residents, facilities, items, orders" style="flex:1 1 320px;box-sizing:border-box;min-height:44px;padding:0 12px;border:1px solid #cdd5e0;border-radius:8px;font:15px 'Source Sans 3',sans-serif">
+    </header>
+
+    <div style="padding:20px 28px;display:flex;flex-direction:column;gap:20px">
+      <div style="font-size:14px;color:#5a6779"><a href="Main.html">Home</a> / <a href="#facilities">Facilities</a> / Atoka County Jail</div>
+
+      <div style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between">
+        <div>
+          <h1 style="margin:0;font-size:26px">Atoka County Jail</h1>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:6px;align-items:center;font-size:15px;color:#5a6779">
+            <span>S001022023</span><span>Atoka, OK</span><span>Central Time</span>
+            <span class="chip ok">Commissary open</span><span class="chip off">0 open orders</span>
+          </div>
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <a class="btn" href="#residents">View residents (38)</a>
+          <a class="btn" href="#orders">View orders</a>
+          <button class="btn" type="button">Import inmates</button>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-wrap:wrap;gap:20px;align-items:flex-start">
+        <nav class="sec card" style="width:240px;padding:8px;box-sizing:border-box" aria-label="Facility settings sections">
+          <a href="#general" class="on">General</a>
+          <a href="#limits">Deposits &amp; order limits</a>
+          <a href="#taxes">Taxes</a>
+          <a href="#indigent">Indigent &amp; receipts</a>
+          <a href="#debit">Debit card providers <span class="chip warn">None</span></a>
+          <a href="#schedule">Order postings &amp; tasks <span class="chip warn">1 failed</span></a>
+          <a href="#locations">Locations &amp; class codes</a>
+          <a href="#catalog">Products &amp; packs <span class="chip off">13 + 4</span></a>
+        </nav>
+
+        <div style="flex:1 1 560px;min-width:0;display:flex;flex-direction:column;gap:20px">
+          <section id="general" class="card" style="padding:20px">
+            <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:16px">
+              <h2 style="margin:0;font-size:18px">General</h2>
+              <span class="help">Last saved Oct 14 by L. McHale</span>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(3, minmax(0, 1fr));gap:16px">
+              <label class="f">Facility name<input type="text" value="Atoka County Jail"></label>
+              <label class="f">Facility ID<input type="text" value="S001022023" readonly></label>
+              <label class="f">Phone<input type="tel" placeholder="(580) 000-0000"></label>
+              <label class="f" style="grid-column:span 2">Address<input type="text" value="201 East Court, Atoka, OK 74525"></label>
+              <label class="f">Timezone<select><option>Central Time</option><option>Mountain Time</option></select></label>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(2, minmax(0, 1fr));gap:12px;margin-top:16px">
+              <label style="display:flex;gap:10px;align-items:flex-start;padding:12px;border:1px solid #e3e8ef;border-radius:8px;font-size:15px"><input type="checkbox" checked style="width:20px;height:20px;margin:2px 0 0"><span>Residents can order commissary<br><span class="help">Turn off to pause all resident ordering at this facility.</span></span></label>
+              <label style="display:flex;gap:10px;align-items:flex-start;padding:12px;border:1px solid #e3e8ef;border-radius:8px;font-size:15px"><input type="checkbox" style="width:20px;height:20px;margin:2px 0 0"><span>Auto-close accounts with a balance on release<br><span class="help">Remaining funds are disbursed by the method set under Debit card providers.</span></span></label>
+              <label style="display:flex;gap:10px;align-items:flex-start;padding:12px;border:1px solid #e3e8ef;border-radius:8px;font-size:15px"><input type="checkbox" style="width:20px;height:20px;margin:2px 0 0"><span>Use JMS open status for purchasing access<br><span class="help">Residents marked inactive in the jail system lose ordering access automatically.</span></span></label>
+            </div>
+            <details style="margin-top:14px;font-size:14px;color:#5a6779"><summary style="cursor:pointer;min-height:44px;display:flex;align-items:center">Legacy system IDs (rarely changed)</summary>
+              <div style="display:grid;grid-template-columns:repeat(3, minmax(0, 1fr));gap:16px;margin-top:8px">
+                <label class="f">Legacy site ID<input type="text" value="8"></label>
+                <label class="f">Legacy site key<input type="text" value="atokaOK"></label>
+              </div>
+            </details>
+            <div style="display:flex;gap:10px;margin-top:20px;justify-content:flex-end"><button class="btn" type="button">Discard changes</button><button class="btn p" type="button">Save general settings</button></div>
+          </section>
+
+          <section id="limits" class="card" style="padding:20px">
+            <h2 style="margin:0 0 4px;font-size:18px">Deposits &amp; order limits</h2>
+            <p class="help" style="margin:0 0 16px">Limits apply per resident. Leave a field at $0.00 for no limit.</p>
+            <div style="display:grid;grid-template-columns:repeat(2, minmax(0, 1fr));gap:20px">
+              <div class="card" style="padding:16px;background:#f9fafc">
+                <h3 style="margin:0 0 12px;font-size:15px">Friends &amp; family deposits</h3>
+                <div style="display:grid;grid-template-columns:repeat(2, minmax(0, 1fr));gap:12px">
+                  <label class="f">Minimum deposit<input type="text" value="$5.00"></label>
+                  <label class="f">Maximum deposit<input type="text" value="$300.00"></label>
+                  <label class="f" style="grid-column:span 2">Weekly max per resident<input type="text" value="$500.00"></label>
+                  <label class="f" style="grid-column:span 2">Deposits go to<select><option>Trust account</option><option>PIN debit</option><option>No deposits allowed</option></select></label>
+                </div>
+              </div>
+              <div class="card" style="padding:16px;background:#f9fafc">
+                <h3 style="margin:0 0 12px;font-size:15px">Resident orders</h3>
+                <div style="display:grid;grid-template-columns:repeat(2, minmax(0, 1fr));gap:12px">
+                  <label class="f">Minimum order<input type="text" value="$0.00"></label>
+                  <label class="f">Maximum order<input type="text" value="$0.00"></label>
+                  <label class="f">Weekly max per resident<input type="text" value="$500.00"></label>
+                  <label class="f">Maximum check amount<input type="text" value="$1,000.00"></label>
+                </div>
+              </div>
+            </div>
+            <div style="display:flex;gap:10px;margin-top:20px;justify-content:flex-end"><button class="btn" type="button">Discard changes</button><button class="btn p" type="button">Save limits</button></div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+
+</body>
+</html>

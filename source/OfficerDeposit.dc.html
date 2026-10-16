@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Officer Deposit</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap">
+<style>
+body{margin:0;font-family:'Source Sans 3',system-ui,sans-serif;color:#1b2538;background:#f4f6f9}
+a{color:#1b5fb4}a:hover{color:#0f3f7d}
+.nav a{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:8px;color:#c7d0dd;text-decoration:none;font-size:15px;min-height:44px;box-sizing:border-box}
+.nav a:hover{background:#2a3650;color:#fff}
+.nav a.on{background:#1b5fb4;color:#fff;font-weight:600}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 16px;border-radius:8px;border:1px solid #cdd5e0;background:#fff;color:#1b2538;font:600 15px 'Source Sans 3',sans-serif;cursor:pointer;text-decoration:none}
+.btn.p{background:#1b5fb4;border-color:#1b5fb4;color:#fff}
+.tender{display:flex;flex-direction:column;align-items:flex-start;gap:4px;padding:16px;border-radius:12px;border:2px solid #cdd5e0;background:#fff;font:600 17px 'Source Sans 3',sans-serif;color:#1b2538;cursor:pointer;min-height:84px;text-align:left}
+.tender small{font-weight:400;color:#5a6779;font-size:13px}
+.tender.on{border-color:#1b5fb4;background:#e3eefc}
+.f{display:flex;flex-direction:column;gap:6px;font-size:14px;color:#5a6779}
+.f input,.f select{min-height:48px;padding:0 12px;border:1px solid #cdd5e0;border-radius:8px;font:17px 'Source Sans 3',sans-serif;background:#fff;color:#1b2538}
+.card{background:#fff;border:1px solid #e3e8ef;border-radius:12px}
+.chip{display:inline-block;padding:2px 10px;border-radius:999px;font-size:13px;font-weight:600}
+.ok{background:#dcf5e6;color:#166534}.warn{background:#fff1d6;color:#8a4b00}
+.help{font-size:13px;color:#5a6779}
+</style>
+</helmet>
+<div style="display:flex;flex-wrap:wrap;min-height:900px">
+  <nav class="nav" style="width:236px;background:#1b2538;padding:16px 12px;box-sizing:border-box;display:flex;flex-direction:column">
+    <div style="display:flex;align-items:center;gap:10px;padding:4px 12px 4px;color:#fff;font-weight:700;font-size:18px">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#5aa9ff" stroke-width="2" aria-hidden="true"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 12l9 4 9-4"/><path d="M3 17l9 4 9-4"/></svg>
+      Commissary
+    </div>
+    <div style="padding:0 12px 14px;color:#7b889c;font-size:13px">Atoka County Jail</div>
+    <a href="OfficerHome.dc.html">Home</a>
+    <a href="OfficerInmate.dc.html">Find inmate</a>
+    <a href="OfficerNewInmate.dc.html">New inmate</a>
+    <a href="OfficerDeposit.dc.html" class="on">Deposit</a>
+    <a href="OfficerFix.dc.html">Bill inmate</a>
+    <a href="#receipts">My receipts today</a>
+    <div style="flex:1"></div>
+    <div style="border-top:1px solid #2a3650;padding:12px;color:#c7d0dd;font-size:14px">Ofc. J. Ramirez<br><span style="color:#7b889c">Detention Officer</span></div>
+    <a href="#logout" style="min-height:40px">Log out</a>
+  </nav>
+
+  <main style="flex:999 1 560px;min-width:0;display:flex;flex-direction:column">
+    <header style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;padding:14px 28px;background:#fff;border-bottom:1px solid #e3e8ef">
+      <div style="font-size:14px;color:#5a6779"><a href="OfficerHome.dc.html">Home</a> / <a href="OfficerInmate.dc.html">ALLEN, CHRISTOPHER WAYNE</a> / Deposit</div>
+      <div style="flex:1"></div>
+      <div style="font-weight:700">Atoka County Jail</div>
+    </header>
+
+    <div style="padding:24px 28px;display:flex;flex-wrap:wrap;gap:24px;align-items:flex-start">
+      <div style="flex:1 1 560px;min-width:0;display:flex;flex-direction:column;gap:20px;max-width:760px">
+        <div>
+          <h1 style="margin:0;font-size:26px">Deposit for ALLEN, CHRISTOPHER WAYNE</h1>
+          <div style="color:#5a6779;font-size:15px;margin-top:4px">Booking 0000042262, Pod B. Available now $43.00. <a href="OfficerInmate.dc.html">Wrong inmate?</a></div>
+        </div>
+
+        <div class="card" style="padding:20px;display:flex;flex-direction:column;gap:18px">
+          <div>
+            <div style="font-weight:700;font-size:16px;margin-bottom:10px">1. What did you receive?</div>
+            <div style="display:grid;grid-template-columns:repeat(3, minmax(0, 1fr));gap:12px">
+              <button type="button" class="{{cashCls}}" onClick="{{pickCash}}">Cash<small>Bills and coins</small></button>
+              <button type="button" class="{{checkCls}}" onClick="{{pickCheck}}">Check or money order<small>Can be placed on hold</small></button>
+              <button type="button" class="{{cardCls}}" onClick="{{pickCard}}">Credit or debit card<small>Swipe, tap, or key in</small></button>
+            </div>
+          </div>
+
+          <div>
+            <div style="font-weight:700;font-size:16px;margin-bottom:10px">2. Amount</div>
+            <label class="f" style="max-width:260px">Amount received<input type="text" value="$50.00" style="font-size:24px;font-weight:700;min-height:56px"></label>
+          </div>
+
+          <sc-if value="{{isCash}}" hint-placeholder-val="{{true}}">
+            <div>
+              <div style="font-weight:700;font-size:16px;margin-bottom:10px">3. Details</div>
+              <div style="display:grid;grid-template-columns:repeat(2, minmax(0, 1fr));gap:12px">
+                <label class="f">Where it came from<select><option>Booking (on inmate at intake)</option><option>Family or friend at the window</option><option>Mail</option><option>Other</option></select></label>
+                <label class="f">Note (optional)<input type="text" placeholder="Anything the next officer should know"></label>
+              </div>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{isCheck}}" hint-placeholder-val="{{false}}">
+            <div>
+              <div style="font-weight:700;font-size:16px;margin-bottom:10px">3. Check details</div>
+              <div style="display:grid;grid-template-columns:repeat(2, minmax(0, 1fr));gap:12px">
+                <label class="f">Type<select><option>Payroll check</option><option>Personal check</option><option>Money order</option><option>Check from another agency</option><option>Government check</option></select></label>
+                <label class="f">Check or money order number<input type="text" value="2211"></label>
+                <label class="f">Who it is from<input type="text" value="Tyson Foods"></label>
+                <label class="f">Hold funds until<input type="date" value="2026-10-23"><span class="help">Leave blank for no hold. Agency and government checks usually need none. A Manager can release a hold early.</span></label>
+              </div>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{isCard}}" hint-placeholder-val="{{false}}">
+            <div>
+              <div style="font-weight:700;font-size:16px;margin-bottom:10px">3. Card</div>
+              <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;padding:16px;border:1px dashed #cdd5e0;border-radius:10px;background:#f9fafc">
+                <div style="flex:1 1 240px"><strong>Swipe or tap the card now</strong><br><span class="help">Reader connected. Or key it in below.</span></div>
+                <button class="btn" type="button">Key in card manually</button>
+              </div>
+              <div style="display:grid;grid-template-columns:repeat(2, minmax(0, 1fr));gap:12px;margin-top:12px">
+                <label class="f">Name on card<input type="text" placeholder="As printed"></label>
+                <label class="f">Facility fee<input type="text" value="$2.50 (5%)" readonly><span class="help">Set by the facility. Inmate receives $47.50.</span></label>
+              </div>
+              <label style="display:flex;gap:10px;align-items:flex-start;margin-top:12px;font-size:15px"><input type="checkbox" checked style="width:20px;height:20px;margin:2px 0 0"><span>Save this card to the inmate's account for phone deposits<br><span class="help">Only the card brand and last four digits are shown to staff.</span></span></label>
+            </div>
+          </sc-if>
+
+          <div style="display:flex;gap:10px;justify-content:flex-end;border-top:1px solid #e3e8ef;padding-top:16px">
+            <a class="btn" href="OfficerInmate.dc.html">Cancel</a>
+            <button class="btn p" type="button" style="padding:0 28px;font-size:17px">Post deposit and print receipt</button>
+          </div>
+        </div>
+      </div>
+
+      <div style="flex:0 1 320px;display:flex;flex-direction:column;gap:16px">
+        <div class="card" style="padding:16px">
+          <h2 style="margin:0 0 10px;font-size:15px">After you post</h2>
+          <div style="display:flex;flex-direction:column;gap:8px;font-size:15px">
+            <div><span class="chip ok">Available</span> <strong>{{availAfter}}</strong></div>
+            <div><span class="chip warn">On hold</span> <strong>{{holdAfter}}</strong></div>
+            <div class="help">{{afterNote}}</div>
+          </div>
+        </div>
+        <div class="card" style="padding:16px;background:#f9fafc">
+          <h2 style="margin:0 0 8px;font-size:15px">Receipt preview</h2>
+          <div style="font-family:ui-monospace,monospace;font-size:13px;color:#1b2538;white-space:pre-line">ATOKA COUNTY JAIL
+Receipt #10484
+10/16/2026 8:58 AM
+Inmate: ALLEN, CHRISTOPHER W
+Booking: 0000042262
+{{receiptLine}}
+Amount: $50.00
+Officer: J. Ramirez</div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":900}}'>
+class Component extends DCLogic {
+  constructor(p){ super(p); this.state = { tender: 'check' }; }
+  renderVals() {
+    const t = this.state.tender;
+    const cls = (k) => 'tender' + (t === k ? ' on' : '');
+    const info = {
+      cash:  { avail: '$93.00', hold: '$0.00', note: 'Cash is available to the inmate right away.', line: 'Cash deposit' },
+      check: { avail: '$43.00', hold: '$50.00', note: 'Held until 10/23/2026. Shows on the account as on hold until then.', line: 'Check #2211, on hold to 10/23' },
+      card:  { avail: '$90.50', hold: '$0.00', note: 'Net of the $2.50 facility fee. Card saved for phone deposits.', line: 'Debit card, Visa 4417, fee $2.50' }
+    }[t];
+    return {
+      cashCls: cls('cash'), checkCls: cls('check'), cardCls: cls('card'),
+      isCash: t === 'cash', isCheck: t === 'check', isCard: t === 'card',
+      pickCash: () => this.setState({ tender: 'cash' }),
+      pickCheck: () => this.setState({ tender: 'check' }),
+      pickCard: () => this.setState({ tender: 'card' }),
+      availAfter: info.avail, holdAfter: info.hold, afterNote: info.note, receiptLine: info.line
+    };
+  }
+}
+</script>
+</body>
+</html>

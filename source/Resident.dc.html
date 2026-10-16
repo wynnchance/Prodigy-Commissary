@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Resident Account</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap">
+<style>
+body{margin:0;font-family:'Source Sans 3',system-ui,sans-serif;color:#1b2538;background:#f4f6f9}
+a{color:#1b5fb4}a:hover{color:#0f3f7d}
+.nav a{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:8px;color:#c7d0dd;text-decoration:none;font-size:15px;min-height:44px;box-sizing:border-box}
+.nav a:hover{background:#2a3650;color:#fff}
+.nav a.on{background:#1b5fb4;color:#fff;font-weight:600}
+.navh{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#7b889c;padding:16px 12px 6px;font-weight:700}
+.btn{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px;border-radius:8px;border:1px solid #cdd5e0;background:#fff;color:#1b2538;font:600 15px 'Source Sans 3',sans-serif;cursor:pointer;text-decoration:none}
+.btn.p{background:#1b5fb4;border-color:#1b5fb4;color:#fff}
+.btn.d{color:#b42318;border-color:#f0c4bf}
+table{border-collapse:collapse;width:100%;font-size:15px}
+th{text-align:left;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#5a6779;padding:10px 12px;border-bottom:1px solid #e3e8ef}
+td{padding:12px;border-bottom:1px solid #eef1f5;vertical-align:middle}
+.chip{display:inline-block;padding:2px 10px;border-radius:999px;font-size:13px;font-weight:600}
+.ok{background:#dcf5e6;color:#166534}.warn{background:#fff1d6;color:#8a4b00}.off{background:#e8ecf2;color:#4a5668}
+.card{background:#fff;border:1px solid #e3e8ef;border-radius:12px}
+.tab{padding:12px 16px;border-bottom:3px solid transparent;color:#5a6779;font-weight:600;text-decoration:none;font-size:15px;min-height:44px;box-sizing:border-box;display:inline-flex;align-items:center}
+.tab.on{color:#1b5fb4;border-color:#1b5fb4}
+.kv{display:grid;grid-template-columns:repeat(2, minmax(0, 1fr));gap:4px 16px;font-size:15px}
+.kv dt{color:#5a6779}.kv dd{margin:0;font-weight:600}
+</style>
+</helmet>
+<div style="display:flex;flex-wrap:wrap;min-height:1120px">
+  <nav class="nav" style="width:236px;background:#1b2538;padding:16px 12px;box-sizing:border-box;display:flex;flex-direction:column">
+    <div style="display:flex;align-items:center;gap:10px;padding:4px 12px 12px;color:#fff;font-weight:700;font-size:18px">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#5aa9ff" stroke-width="2" aria-hidden="true"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 12l9 4 9-4"/><path d="M3 17l9 4 9-4"/></svg>
+      Prodigy Admin
+    </div>
+    <a href="Main.dc.html">Home</a>
+    <div class="navh">Operate</div>
+    <a href="Resident.dc.html" class="on">Residents</a>
+    <a href="#orders">Orders &amp; Batches</a>
+    <a href="#finances">Finances</a>
+    <a href="#reports">Reports</a>
+    <div class="navh">Catalog</div>
+    <a href="#products">Products</a>
+    <a href="#warehouses">Warehouses</a>
+    <div class="navh">Setup</div>
+    <a href="Facility.dc.html">Facilities</a>
+    <a href="#rules">Rules</a>
+    <a href="#customers">Customers</a>
+    <a href="#admins">Admins &amp; Settings</a>
+  </nav>
+
+  <main style="flex:999 1 560px;min-width:0;display:flex;flex-direction:column">
+    <header style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;padding:14px 28px;background:#fff;border-bottom:1px solid #e3e8ef">
+      <label for="gsearch2" style="position:absolute;left:-9999px">Search everything</label>
+      <input id="gsearch2" type="search" placeholder="Search residents, facilities, items, orders" style="flex:1 1 320px;box-sizing:border-box;min-height:44px;padding:0 12px;border:1px solid #cdd5e0;border-radius:8px;font:15px 'Source Sans 3',sans-serif">
+      <label for="fac2" style="font-size:14px;color:#5a6779">Facility</label>
+      <select id="fac2" style="min-height:44px;padding:0 12px;border:1px solid #cdd5e0;border-radius:8px;font:15px 'Source Sans 3',sans-serif;background:#fff"><option>Douglas</option><option>All facilities</option></select>
+    </header>
+
+    <div style="padding:20px 28px;display:flex;flex-direction:column;gap:20px">
+      <div style="font-size:14px;color:#5a6779"><a href="Main.dc.html">Home</a> / <a href="#residents">Residents</a> / ABBETT, ASHLEY MARIE</div>
+
+      <div class="card" style="padding:20px;display:flex;flex-wrap:wrap;gap:20px;align-items:flex-start">
+        <div style="width:96px;height:112px;border-radius:10px;background:#e8ecf2;display:flex;align-items:center;justify-content:center;color:#5a6779;font-size:13px">No photo</div>
+        <div style="flex:1 1 320px;min-width:0">
+          <h1 style="margin:0;font-size:26px">ABBETT, ASHLEY MARIE</h1>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 12px;align-items:center;font-size:15px;color:#5a6779">
+            <span>Douglas</span><span>Account 187914</span><span>Booked 12/31/2022</span>
+            <span class="chip ok">Open</span><span class="chip ok">JMS active</span>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:24px">
+            <div><div style="font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#5a6779;font-weight:700">Available balance</div><div style="font-size:32px;font-weight:700">$1.50</div></div>
+            <div><div style="font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#5a6779;font-weight:700">On hold</div><div style="font-size:32px;font-weight:700;color:#5a6779">$0.00</div></div>
+            <div><div style="font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#5a6779;font-weight:700">Debts owed</div><div style="font-size:32px;font-weight:700;color:#b42318">$25.16</div></div>
+            <div><div style="font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#5a6779;font-weight:700">Spent this week</div><div style="font-size:32px;font-weight:700">$0.00 <span style="font-size:14px;color:#5a6779;font-weight:400">of $500 limit</span></div></div>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px;min-width:180px">
+          <button class="btn p" type="button">Deposit</button>
+          <button class="btn" type="button">Withdraw / Disburse</button>
+          <button class="btn" type="button">Place hold</button>
+          <button class="btn" type="button">Print statement</button>
+          <button class="btn d" type="button">Close account</button>
+        </div>
+      </div>
+
+      <div class="card" style="overflow:hidden">
+        <div style="display:flex;flex-wrap:wrap;border-bottom:1px solid #e3e8ef;padding:0 8px">
+          <a href="#overview" class="tab on">Overview</a>
+          <a href="#transactions" class="tab">Transactions (322)</a>
+          <a href="#debts" class="tab">Debts (3)</a>
+          <a href="#purchases" class="tab">Purchases (3)</a>
+          <a href="#rules" class="tab">Rules &amp; limits</a>
+          <a href="#profile" class="tab">Profile</a>
+        </div>
+
+        <div style="padding:20px;display:grid;grid-template-columns:repeat(3, minmax(0, 1fr));gap:20px">
+          <div style="grid-column:span 2;display:flex;flex-direction:column;gap:12px">
+            <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:10px">
+              <h2 style="margin:0;font-size:17px">Recent transactions</h2>
+              <div style="display:flex;gap:8px;flex-wrap:wrap">
+                <select aria-label="Date range" style="min-height:40px;padding:0 10px;border:1px solid #cdd5e0;border-radius:8px;font:14px 'Source Sans 3',sans-serif;background:#fff"><option>Last 30 days</option><option>Last 90 days</option><option>All time</option></select>
+                <select aria-label="Type" style="min-height:40px;padding:0 10px;border:1px solid #cdd5e0;border-radius:8px;font:14px 'Source Sans 3',sans-serif;background:#fff"><option>All types</option><option>Deposits</option><option>Purchases</option><option>Debts</option></select>
+                <a href="#transactions" class="btn" style="min-height:40px">All 322</a>
+              </div>
+            </div>
+            <div style="overflow-x:auto">
+            <table>
+              <thead><tr><th>Date</th><th>Description</th><th>Type</th><th style="text-align:right">Amount</th><th style="text-align:right">Balance after</th><th></th></tr></thead>
+              <tbody>
+                <tr><td>03/20/2023 5:59 AM</td><td>Bill payment #1320446<br><span style="color:#5a6779;font-size:13px">Fund 102 receivables</span></td><td><span class="chip off">Debt payment</span></td><td style="text-align:right;color:#b42318">-$25.16</td><td style="text-align:right">$1.50</td><td><a href="#r" aria-label="Receipt for transaction 1320446" style="font-size:14px">Receipt</a></td></tr>
+                <tr><td>03/20/2023 5:59 AM</td><td>Bill #1320445<br><span style="color:#5a6779;font-size:13px">Fund 102 receivables</span></td><td><span class="chip warn">Debt added</span></td><td style="text-align:right">$25.16</td><td style="text-align:right">$26.66</td><td><a href="#r" aria-label="Receipt for transaction 1320445" style="font-size:14px">Receipt</a></td></tr>
+                <tr><td>03/20/2023 4:24 AM</td><td>Bill payment #1320433<br><span style="color:#5a6779;font-size:13px">Fund 4 receivables</span></td><td><span class="chip off">Debt payment</span></td><td style="text-align:right;color:#b42318">-$5.00</td><td style="text-align:right">$26.66</td><td><a href="#r" aria-label="Receipt for transaction 1320433" style="font-size:14px">Receipt</a></td></tr>
+                <tr><td>03/19/2023 6:20 PM</td><td>Bill payment #1320355<br><span style="color:#5a6779;font-size:13px">Fund 102 receivables</span></td><td><span class="chip off">Debt payment</span></td><td style="text-align:right;color:#b42318">-$1.84</td><td style="text-align:right">$31.66</td><td><a href="#r" aria-label="Receipt for transaction 1320355" style="font-size:14px">Receipt</a></td></tr>
+                <tr><td>07/05/2022 11:34 AM</td><td>Commissary order #77378<br><span style="color:#5a6779;font-size:13px">8 items</span></td><td><span class="chip off">Purchase</span></td><td style="text-align:right;color:#b42318">-$20.00</td><td style="text-align:right">$33.50</td><td><a href="#r" aria-label="Receipt for order 77378" style="font-size:14px">Receipt</a></td></tr>
+              </tbody>
+            </table>
+            </div>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:16px">
+            <div class="card" style="padding:16px">
+              <h2 style="margin:0 0 10px;font-size:15px">Account details</h2>
+              <dl class="kv" style="margin:0">
+                <dt>Booking ID</dt><dd>187914</dd>
+                <dt>Location</dt><dd>Pod B, Cell 12</dd>
+                <dt>Privilege level</dt><dd>3 of 5</dd>
+                <dt>DOB</dt><dd>03/13/1988</dd>
+                <dt>Held for</dt><dd>County</dd>
+              </dl>
+              <a href="#profile" style="display:inline-block;margin-top:10px;font-size:14px">Edit profile</a>
+            </div>
+            <div class="card" style="padding:16px">
+              <h2 style="margin:0 0 10px;font-size:15px">Active rules</h2>
+              <div style="font-size:14px;display:flex;flex-direction:column;gap:6px">
+                <div><span class="chip warn">Facility</span> Max $500 orders per week</div>
+                <div><span class="chip warn">Resident</span> No hygiene items until 11/02</div>
+              </div>
+              <a href="#rules" style="display:inline-block;margin-top:10px;font-size:14px">Manage rules</a>
+            </div>
+            <div class="card" style="padding:16px">
+              <h2 style="margin:0 0 10px;font-size:15px">Notes</h2>
+              <label for="notes" style="position:absolute;left:-9999px">Account notes</label>
+              <textarea id="notes" rows="3" placeholder="Add a note visible to staff" style="width:100%;box-sizing:border-box;border:1px solid #cdd5e0;border-radius:8px;padding:8px;font:14px 'Source Sans 3',sans-serif"></textarea>
+              <button class="btn" type="button" style="margin-top:8px;min-height:40px">Save note</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1120}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Manager Bank Deposit</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap">
+<style>
+body{margin:0;font-family:'Source Sans 3',system-ui,sans-serif;color:#1b2538;background:#f4f6f9}
+a{color:#1b5fb4}a:hover{color:#0f3f7d}
+.nav a{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:8px;color:#c7d0dd;text-decoration:none;font-size:15px;min-height:44px;box-sizing:border-box}
+.nav a:hover{background:#2a3650;color:#fff}
+.nav a.on{background:#1b5fb4;color:#fff;font-weight:600}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 16px;border-radius:8px;border:1px solid #cdd5e0;background:#fff;color:#1b2538;font:600 15px 'Source Sans 3',sans-serif;cursor:pointer;text-decoration:none}
+.btn.p{background:#1b5fb4;border-color:#1b5fb4;color:#fff}
+.card{background:#fff;border:1px solid #e3e8ef;border-radius:12px}
+.chip{display:inline-block;padding:2px 10px;border-radius:999px;font-size:13px;font-weight:600}
+.ok{background:#dcf5e6;color:#166534}.warn{background:#fff1d6;color:#8a4b00}.off{background:#e8ecf2;color:#4a5668}
+table{border-collapse:collapse;width:100%;font-size:15px}
+th{text-align:left;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#5a6779;padding:10px 12px;border-bottom:1px solid #e3e8ef}
+td{padding:9px 12px;border-bottom:1px solid #eef1f5;vertical-align:middle}
+.f{display:flex;flex-direction:column;gap:6px;font-size:14px;color:#5a6779}
+.f input,.f select{min-height:44px;padding:0 12px;border:1px solid #cdd5e0;border-radius:8px;font:15px 'Source Sans 3',sans-serif;background:#fff;color:#1b2538}
+.help{font-size:13px;color:#5a6779}
+.slip{font-family:ui-monospace,monospace;font-size:13px;white-space:pre-line;background:#fff;border:1px solid #cdd5e0;padding:16px;border-radius:8px}
+</style>
+</helmet>
+<div style="display:flex;flex-wrap:wrap;min-height:980px">
+  <nav class="nav" style="width:236px;background:#1b2538;padding:16px 12px;box-sizing:border-box;display:flex;flex-direction:column">
+    <div style="display:flex;align-items:center;gap:10px;padding:4px 12px 4px;color:#fff;font-weight:700;font-size:18px">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#5aa9ff" stroke-width="2" aria-hidden="true"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 12l9 4 9-4"/><path d="M3 17l9 4 9-4"/></svg>
+      Commissary
+    </div>
+    <div style="padding:0 12px 14px;color:#7b889c;font-size:13px">Atoka County Jail</div>
+    <a href="ManagerHome.dc.html">Today</a>
+    <a href="OfficerInmate.dc.html">Inmates</a>
+    <a href="ManagerDrawer.dc.html">Drawer</a>
+    <a href="ManagerBankDeposit.dc.html" class="on">Bank deposits</a>
+    <a href="ManagerRelease.dc.html">Releases</a>
+    <a href="ManagerOrders.dc.html">Orders</a>
+    <a href="ManagerReconcile.dc.html">Reconcile</a>
+    <a href="#reports">Reports</a>
+    <div style="flex:1"></div>
+    <div style="border-top:1px solid #2a3650;padding:12px;color:#c7d0dd;font-size:14px">Donna Pruitt<br><span style="color:#7b889c">Commissary Manager</span></div>
+    <a href="#logout" style="min-height:40px">Log out</a>
+  </nav>
+
+  <main style="flex:999 1 560px;min-width:0;display:flex;flex-direction:column">
+    <header style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;padding:14px 28px;background:#fff;border-bottom:1px solid #e3e8ef">
+      <div style="font-size:14px;color:#5a6779"><a href="ManagerHome.dc.html">Today</a> / Bank deposit</div>
+      <div style="flex:1"></div>
+      <div style="font-weight:700">Atoka County Jail</div>
+    </header>
+
+    <div style="padding:24px 28px;display:flex;flex-direction:column;gap:20px">
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;align-items:flex-end">
+        <div>
+          <h1 style="margin:0;font-size:26px">Bank deposit to the Inmate Trust Fund</h1>
+          <div style="color:#5a6779;font-size:15px;margin-top:4px">Step 3 of 5. Everything received in cash, check, or money order since the last deposit (10/15, 3:10 PM). The county holds the account; this records the deposit and prints the slip.</div>
+        </div>
+        <a href="#history" style="font-size:14px">Past deposits</a>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(3, minmax(0, 1fr));gap:20px;align-items:start">
+        <div style="grid-column:span 2;display:flex;flex-direction:column;gap:16px">
+          <div class="card" style="overflow:hidden">
+            <div style="padding:14px 16px;border-bottom:1px solid #e3e8ef;display:flex;justify-content:space-between;align-items:center"><h2 style="margin:0;font-size:17px">What goes to the bank</h2><span class="chip ok">Drawer count matched, verified by Sgt. Boyd</span></div>
+            <table>
+              <thead><tr><th>Tender</th><th>Receipts</th><th style="text-align:right">Amount</th></tr></thead>
+              <tbody>
+                <tr><td>Cash</td><td>9 receipts</td><td style="text-align:right">$385.00</td></tr>
+                <tr><td>Checks</td><td>2 receipts (#2211 Tyson Foods $50.00, #8871 Oklahoma DOC $140.00)</td><td style="text-align:right">$190.00</td></tr>
+                <tr><td>Money orders</td><td>0</td><td style="text-align:right">$0.00</td></tr>
+                <tr style="font-weight:700;background:#f9fafc"><td>Deposit total</td><td></td><td style="text-align:right;font-size:18px">$575.00</td></tr>
+              </tbody>
+            </table>
+            <div style="padding:10px 16px;font-size:14px;color:#5a6779">Card and kiosk deposits ($37.50 today) settle straight to the bank by ACH and are listed separately so the statement matches.</div>
+          </div>
+
+          <div class="card" style="overflow:hidden">
+            <div style="padding:14px 16px;border-bottom:1px solid #e3e8ef"><h2 style="margin:0;font-size:17px">Receipts in this deposit</h2></div>
+            <table>
+              <thead><tr><th>Receipt</th><th>When</th><th>Inmate</th><th>Tender</th><th>By</th><th style="text-align:right">Amount</th></tr></thead>
+              <tbody>
+                <tr><td>#10483</td><td>Today 7:48 AM</td><td>ALLEN, CHRISTOPHER W</td><td>Check #2211</td><td>Ramirez</td><td style="text-align:right">$50.00</td></tr>
+                <tr><td>#10482</td><td>Today 8:52 AM</td><td>ALEXANDER, GUY</td><td>Cash</td><td>Ramirez</td><td style="text-align:right">$25.00</td></tr>
+                <tr><td>#10481</td><td>Today 7:45 AM</td><td>ALLEN, CHRISTOPHER W</td><td>Cash</td><td>Ramirez</td><td style="text-align:right">$43.00</td></tr>
+                <tr><td>#10478</td><td>10/15 6:05 PM</td><td>MARTINEZ, DAVID R</td><td>Check #8871</td><td>Boyd</td><td style="text-align:right">$140.00</td></tr>
+                <tr><td colspan="6" style="color:#5a6779">7 more receipts. <a href="#all">Show all 11</a></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:16px">
+          <div class="card" style="padding:18px;display:flex;flex-direction:column;gap:12px">
+            <h2 style="margin:0;font-size:16px">Deposit slip</h2>
+            <div class="slip">ATOKA COUNTY JAIL
+Inmate Trust Fund
+First Bank of Atoka  ****2290
+
+Date: 10/16/2026
+Cash         $385.00
+Checks (2)   $190.00
+Money orders   $0.00
+TOTAL        $575.00
+
+Receipts #10471 to #10483
+Prepared: D. Pruitt
+Verified: Sgt. T. Boyd</div>
+            <button class="btn" type="button">Print slip and receipt list</button>
+          </div>
+          <div class="card" style="padding:18px;display:flex;flex-direction:column;gap:12px">
+            <h2 style="margin:0;font-size:16px">After the bank trip</h2>
+            <label class="f">Deposited on<input type="date" value="2026-10-16"></label>
+            <label class="f">Bank confirmation or slip number<input type="text" placeholder="Optional"></label>
+            <div class="help">Once marked deposited, the receipts in it lock. A fix on any of them needs your approval.</div>
+            <button class="btn p" type="button">Mark as deposited</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":980}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>
