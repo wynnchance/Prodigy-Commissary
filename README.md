@@ -26,7 +26,7 @@ tests/run.py             Playwright end-to-end checks for every role (python3 te
 ## Testing
 
 ```
-cd docs/static&& python3 -m http.server 8787 &
+cd docs && python3 -m http.server 8787 &
 python3 tests/run.py all
 ```
 
