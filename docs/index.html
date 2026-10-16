@@ -3,94 +3,36 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Prodigy Commissary Redesign: clickable mockup</title>
+<title>Prodigy Commissary Redesign</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap">
 <style>
 body{margin:0;font-family:'Source Sans 3',system-ui,sans-serif;color:#1b2538;background:#f4f6f9}
 a{color:#1b5fb4}
-.wrap{max-width:1100px;margin:0 auto;padding:40px 24px}
-h1{font-size:30px;margin:0 0 6px}
-.sub{color:#5a6779;font-size:16px;margin-bottom:28px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
-.role{background:#fff;border:1px solid #e3e8ef;border-radius:12px;padding:20px;display:flex;flex-direction:column;gap:10px}
-.role h2{margin:0;font-size:19px}
-.role p{margin:0;color:#5a6779;font-size:14px}
-.role ol{margin:6px 0 0;padding-left:20px;font-size:15px;line-height:1.7}
-.start{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 16px;border-radius:8px;background:#1b5fb4;color:#fff;font-weight:600;text-decoration:none;align-self:flex-start;margin-top:6px}
-.tag{display:inline-block;padding:2px 10px;border-radius:999px;font-size:12px;font-weight:600;background:#e8ecf2;color:#4a5668}
-.note{margin-top:28px;background:#fff1d6;border:1px solid #f0d9a8;border-radius:10px;padding:14px 16px;font-size:14px}
+.wrap{max-width:1000px;margin:0 auto;padding:48px 24px;display:flex;flex-direction:column;gap:24px}
+h1{font-size:30px;margin:0}
+.sub{color:#5a6779;font-size:16px}
+.hero{background:#fff;border:1px solid #e3e8ef;border-radius:14px;padding:28px;display:flex;flex-wrap:wrap;gap:20px;align-items:center}
+.hero .t{flex:1 1 400px}
+.start{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 28px;border-radius:10px;background:#1b5fb4;color:#fff;font-weight:700;font-size:17px;text-decoration:none}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.card{background:#fff;border:1px solid #e3e8ef;border-radius:12px;padding:18px;display:flex;flex-direction:column;gap:8px}
+.card h2{margin:0;font-size:17px}.card p{margin:0;color:#5a6779;font-size:14px}
+.card ol{margin:4px 0 0;padding-left:20px;font-size:14px;line-height:1.7}
+.note{background:#fff1d6;border:1px solid #f0d9a8;border-radius:10px;padding:14px 16px;font-size:14px}
 </style>
 </head>
 <body>
 <div class="wrap">
-  <h1>Prodigy Commissary Redesign</h1>
-  <div class="sub">Clickable mockup of the role-based admin views. Pick a role and walk through its screens. Nothing here is connected to a live system.</div>
-
+  <div><h1>Prodigy Commissary Redesign</h1><div class="sub">Role-based redesign of the commissary admin software, built for jail staff first.</div></div>
+  <div class="hero"><div class="t"><h2 style="margin:0 0 6px;font-size:22px">Working mockup</h2><div class="sub">Pick a role and use it. Deposits post, fixes reverse, the drawer counts, the bank deposit builds, approvals apply, and the auditor's reports read what actually happened. Data lives in your browser; reset it from the footer any time.</div></div><a class="start" href="app.html">Open the mockup</a></div>
   <div class="grid">
-    <div class="role">
-      <h2>Detention Officer</h2>
-      <p>Books inmates in, takes deposits, bills for medical and damage, fixes mistakes.</p>
-      <ol>
-        <li><a href="OfficerHome.html">Home: find inmate, recent bookings</a></li>
-        <li><a href="OfficerInmate.html">Inmate account</a></li>
-        <li><a href="OfficerDeposit.html">Deposit (cash, check, card)</a></li>
-        <li><a href="OfficerFix.html">Bill inmate and Fix a transaction</a></li>
-        <li><a href="OfficerNewInmate.html">New inmate (manual)</a></li>
-      </ol>
-      <a class="start" href="OfficerHome.html">Start as Officer</a>
-    </div>
-
-    <div class="role">
-      <h2>Commissary Manager</h2>
-      <p>Closes the day, makes the bank deposit, pays out releases, reconciles monthly.</p>
-      <ol>
-        <li><a href="ManagerHome.html">Today: daily close-out</a></li>
-        <li><a href="ManagerDrawer.html">Count the drawer</a></li>
-        <li><a href="ManagerBankDeposit.html">Bank deposit</a></li>
-        <li><a href="ManagerRelease.html">Releases and unclaimed funds</a></li>
-        <li><a href="ManagerOrders.html">Orders and commissary transfer</a></li>
-        <li><a href="ManagerReconcile.html">Monthly reconciliation</a></li>
-      </ol>
-      <a class="start" href="ManagerHome.html">Start as Manager</a>
-    </div>
-
-    <div class="role">
-      <h2>Auditor</h2>
-      <p>Report library and read-only ledger for county and state auditors. Time-limited, read-only login.</p>
-      <ol>
-        <li><a href="AuditorHome.html">Report library</a></li>
-        <li><a href="AuditorReport.html">Sample report: daily receipts to deposits</a></li>
-        <li><a href="AuditorLedger.html">Read-only ledger</a></li>
-      </ol>
-      <a class="start" href="AuditorHome.html">Start as Auditor</a>
-    </div>
-
-    <div class="role">
-      <h2>Jail Administrator</h2>
-      <p>Everything a Manager can do, plus approvals, facility settings, and staff access.</p>
-      <ol>
-        <li><a href="AdminHome.html">Overview and approvals</a></li>
-        <li><a href="AdminSettings.html">Facility settings: charge types, approvals, deposits, releases</a></li>
-        <li><a href="AdminUsers.html">Users and auditor logins</a></li>
-      </ol>
-      <a class="start" href="AdminHome.html">Start as Jail Administrator</a>
-    </div>
-
-    <div class="role">
-      <h2>Prodigy Admin (Support and Accounting)</h2>
-      <p>Every facility, with a "view as" door into each jail's role views, plus the setup and accounting the jails never see.</p>
-      <ol>
-        <li><a href="ProdigyHome.html">All facilities</a></li>
-        <li><a href="ProdigyFacility.html">Facility page: view as staff, Prodigy setup</a></li>
-        <li><a href="ProdigyAccounting.html">Finances: ledger, commissions, bank accounts</a></li>
-        <li><a href="ProdigySupport.html">Support queue: failed batches and jail requests</a></li>
-      </ol>
-      <a class="start" href="ProdigyHome.html">Start as Prodigy</a>
-      <p style="margin-top:8px">First-pass drafts, before the role plan: <a href="Main.html">dashboard</a>, <a href="Resident.html">resident</a>, <a href="Facility.html">facility settings</a>.</p>
-    </div>
+    <div class="card"><h2>Detention Officer</h2><p>Find or create an inmate, deposit cash, check, or card, bill for medical or damage, fix a mistake, print receipts.</p><ol><li>Deposit $20 cash for ALLEN, CHRISTOPHER WAYNE</li><li>Fix it: move to the other Allen</li><li>Bill a medical visit</li></ol></div>
+    <div class="card"><h2>Commissary Manager</h2><p>Count the drawer, build the bank deposit, pay out releases, post carts, record the commissary transfer, reconcile the month.</p><ol><li>Count the drawer short by $5</li><li>Mark the bank deposit</li><li>Pay out GARZA, MARIA E</li></ol></div>
+    <div class="card"><h2>Jail Administrator</h2><p>Approve what is waiting, set charge types and approval thresholds, manage staff and auditor logins.</p><ol><li>Approve the commissary transfer</li><li>Turn on "deposits over $50 need approval"</li><li>Deposit $60 as an officer and approve it</li></ol></div>
+    <div class="card"><h2>Auditor</h2><p>Read-only report library and ledger. Every report is computed from the live data and every run is logged.</p><ol><li>Run Daily receipts to deposits</li><li>Run Adjustments and fixes</li><li>Build the audit packet</li></ol></div>
+    <div class="card"><h2>Prodigy Support and Accounting</h2><p>All facilities, a facility page with "view as" into each jail's role views, the support queue, and the full ledger.</p><ol><li>Retry the Douglas JMS feed</li><li>Connect Atoka's card processor, then deposit by card as an officer</li><li>View Atoka as its Manager</li></ol></div>
   </div>
-
-  <div class="note">Links that go to a page not built yet (reports, help, log out) stay on the current page. The roles and workflows plan behind these screens lives in the project doc "Commissary Admin Redesign: Roles, Workflows and Audit Requirements."</div>
+  <div class="note">The <a href="static/index.html">static screens</a> from the first design pass are kept for reference. The design canvas and the roles plan live in the Claude project.</div>
 </div>
 </body>
 </html>
