@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Prodigy Admin Facility Page</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap">
+<style>
+body{margin:0;font-family:'Source Sans 3',system-ui,sans-serif;color:#1b2538;background:#f4f6f9}
+a{color:#1b5fb4}a:hover{color:#0f3f7d}
+.nav a{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:8px;color:#c7d0dd;text-decoration:none;font-size:15px;min-height:44px;box-sizing:border-box}
+.nav a:hover{background:#2a3650;color:#fff}
+.nav a.on{background:#1b5fb4;color:#fff;font-weight:600}
+.navh{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#7b889c;padding:14px 12px 4px;font-weight:700}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 16px;border-radius:8px;border:1px solid #cdd5e0;background:#fff;color:#1b2538;font:600 15px 'Source Sans 3',sans-serif;cursor:pointer;text-decoration:none}
+.btn.p{background:#1b5fb4;border-color:#1b5fb4;color:#fff}
+.btn.s{min-height:36px;padding:0 12px;font-size:14px}
+.card{background:#fff;border:1px solid #e3e8ef;border-radius:12px}
+.chip{display:inline-block;padding:2px 10px;border-radius:999px;font-size:13px;font-weight:600}
+.ok{background:#dcf5e6;color:#166534}.warn{background:#fff1d6;color:#8a4b00}.off{background:#e8ecf2;color:#4a5668}.bad{background:#fde4e1;color:#9f1d12}
+.tab{padding:12px 16px;border-bottom:3px solid transparent;color:#5a6779;font-weight:600;text-decoration:none;font-size:15px;min-height:44px;box-sizing:border-box;display:inline-flex;align-items:center;gap:8px}
+.tab.on{color:#1b5fb4;border-color:#1b5fb4}
+.viewas{display:flex;flex-direction:column;gap:4px;padding:14px;border:1px solid #e3e8ef;border-radius:10px;text-decoration:none;color:#1b2538;background:#fff}
+.viewas:hover{border-color:#1b5fb4}
+.viewas strong{font-size:15px}
+.viewas span{color:#5a6779;font-size:13px}
+.row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid #eef1f5;font-size:15px}
+.row:last-child{border-bottom:0}
+.row small{display:block;color:#5a6779;font-size:13px}
+.kv{display:grid;grid-template-columns:repeat(2, minmax(0, 1fr));gap:4px 16px;font-size:15px;margin:0}
+.kv dt{color:#5a6779}.kv dd{margin:0;font-weight:600}
+</style>
+</helmet>
+<div style="display:flex;flex-wrap:wrap;min-height:1120px">
+  <nav class="nav" style="width:236px;background:#1b2538;padding:16px 12px;box-sizing:border-box;display:flex;flex-direction:column">
+    <div style="display:flex;align-items:center;gap:10px;padding:4px 12px 4px;color:#fff;font-weight:700;font-size:18px">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#5aa9ff" stroke-width="2" aria-hidden="true"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 12l9 4 9-4"/><path d="M3 17l9 4 9-4"/></svg>
+      Prodigy Admin
+    </div>
+    <div style="padding:0 12px 10px;color:#7b889c;font-size:13px">Atoka County Jail</div>
+    <a href="ProdigyHome.dc.html">All facilities</a>
+    <a href="ProdigySupport.dc.html">Support queue</a>
+    <div class="navh">Operate</div>
+    <a href="OfficerInmate.dc.html">Residents</a>
+    <a href="ManagerOrders.dc.html">Orders and batches</a>
+    <a href="ProdigyAccounting.dc.html">Finances</a>
+    <a href="AuditorHome.dc.html">Reports</a>
+    <div class="navh">Catalog</div>
+    <a href="#products">Products</a>
+    <a href="#warehouses">Warehouses</a>
+    <div class="navh">Setup</div>
+    <a href="ProdigyFacility.dc.html" class="on">Facilities</a>
+    <a href="#rules">Rules</a>
+    <a href="#customers">Customers</a>
+    <a href="#kiosks">Kiosks</a>
+    <a href="#admins">Admins and settings</a>
+    <div style="flex:1"></div>
+    <div style="border-top:1px solid #2a3650;padding:12px;color:#c7d0dd;font-size:14px">Chance Wynn<br><span style="color:#7b889c">Prodigy Support</span></div>
+    <a href="#logout" style="min-height:40px">Log out</a>
+  </nav>
+
+  <main style="flex:999 1 560px;min-width:0;display:flex;flex-direction:column">
+    <header style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;padding:14px 28px;background:#fff;border-bottom:1px solid #e3e8ef">
+      <label for="g6" style="position:absolute;left:-9999px">Search everything</label>
+      <input id="g6" type="search" placeholder="Search residents, facilities, items, orders, kiosks" style="flex:1 1 320px;max-width:520px;min-height:44px;padding:0 14px;border:1px solid #cdd5e0;border-radius:8px;font:15px 'Source Sans 3',sans-serif;box-sizing:border-box">
+      <label for="fac6" style="font-size:14px;color:#5a6779">Facility</label>
+      <select id="fac6" style="min-height:44px;padding:0 12px;border:1px solid #cdd5e0;border-radius:8px;font:15px 'Source Sans 3',sans-serif;background:#fff"><option>Atoka County Jail</option><option>All facilities (12)</option></select>
+    </header>
+
+    <div style="padding:24px 28px;display:flex;flex-direction:column;gap:20px">
+      <div style="font-size:14px;color:#5a6779"><a href="ProdigyHome.dc.html">All facilities</a> / Atoka County Jail</div>
+      <div style="display:flex;flex-wrap:wrap;gap:16px;align-items:flex-start;justify-content:space-between">
+        <div>
+          <h1 style="margin:0;font-size:26px">Atoka County Jail</h1>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:6px;align-items:center;font-size:15px;color:#5a6779">
+            <span>S001022023</span><span>201 East Court, Atoka, OK 74525</span><span>Central Time</span><span>Customer since 2019</span>
+            <span class="chip ok">Healthy</span>
+          </div>
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap"><a class="btn" href="#contacts">Contacts</a><a class="btn" href="#contract">Contract</a><a class="btn p" href="ProdigySupport.dc.html">New support item</a></div>
+      </div>
+
+      <div class="card" style="padding:18px">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:12px">
+          <h2 style="margin:0;font-size:17px">View this jail as its staff see it</h2>
+          <span style="color:#5a6779;font-size:13px">Opens the jail-side view scoped to Atoka. Your session is logged as Prodigy, and you can act on their behalf with a ticket note.</span>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(4, minmax(0, 1fr));gap:12px">
+          <a class="viewas" href="OfficerHome.dc.html"><strong>Detention Officer</strong><span>Find inmate, deposits, billing, fixes</span></a>
+          <a class="viewas" href="ManagerHome.dc.html"><strong>Commissary Manager</strong><span>Close-out, bank deposit, releases, reconcile</span></a>
+          <a class="viewas" href="AdminHome.dc.html"><strong>Jail Administrator</strong><span>Approvals, facility settings, users</span></a>
+          <a class="viewas" href="AuditorHome.dc.html"><strong>Auditor</strong><span>Report library, read-only ledger</span></a>
+        </div>
+      </div>
+
+      <div class="card" style="overflow:hidden">
+        <div style="display:flex;flex-wrap:wrap;border-bottom:1px solid #e3e8ef;padding:0 8px">
+          <a href="#setup" class="tab on">Prodigy setup</a>
+          <a href="#integrations" class="tab">Integrations <span class="chip warn">1</span></a>
+          <a href="#catalog" class="tab">Products and pricing</a>
+          <a href="#kiosks" class="tab">Kiosks</a>
+          <a href="#tasks" class="tab">Scheduled tasks and batches</a>
+          <a href="#activity" class="tab">Activity log</a>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(2, minmax(0, 1fr));gap:0">
+          <div style="border-right:1px solid #eef1f5">
+            <div class="row"><div><strong>JMS feed</strong><small>Tyler Odyssey Jail, bookings and releases. Last received today 8:52 AM.</small></div><span class="chip ok">Connected</span></div>
+            <div class="row"><div><strong>Card processor</strong><small>Not connected. Jail asked for card-on-file on 10/14.</small></div><a class="btn s" href="#cc">Connect</a></div>
+            <div class="row"><div><strong>Kiosks</strong><small>2 lobby kiosks, 1 booking kiosk. Bill acceptor at 15% on booking kiosk.</small></div><span class="chip ok">3 online</span></div>
+            <div class="row"><div><strong>Warehouse</strong><small>Prodigy Main Warehouse. Cutoff 4:00 PM, delivery Tuesday and Friday.</small></div><a href="#w" style="font-size:14px">Edit</a></div>
+            <div class="row"><div><strong>Tax groups</strong><small>Oklahoma state 4.5%, Atoka County 2%, City of Atoka 3%.</small></div><a href="#t" style="font-size:14px">Edit</a></div>
+          </div>
+          <div>
+            <div class="row"><div><strong>Products and pricing</strong><small>13 items and 4 packs assigned. Facility markup 10% over base.</small></div><a href="#p" style="font-size:14px">Edit</a></div>
+            <div class="row"><div><strong>Resident deposit limits</strong><small>Max $500 per week, min order $0, max check $1,000. Jail can edit these.</small></div><a href="AdminSettings.dc.html" style="font-size:14px">Jail settings</a></div>
+            <div class="row"><div><strong>Scheduled tasks</strong><small>Order posting daily 6:00 AM, inmate import every 15 min, cart processing 2:00 PM.</small></div><span class="chip ok">All ran today</span></div>
+            <div class="row"><div><strong>Debit card provider</strong><small>Numi, account ATOKA-01, for release payouts.</small></div><span class="chip ok">Active</span></div>
+            <div class="row"><div><strong>Legacy IDs</strong><small>Site 8, key atokaOK (Lockdown migration).</small></div><span class="chip off">Reference</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(3, minmax(0, 1fr));gap:20px;align-items:start">
+        <div class="card" style="padding:16px">
+          <h2 style="margin:0 0 10px;font-size:15px">Money at a glance</h2>
+          <dl class="kv">
+            <dt>Inmate balances</dt><dd>$14,208.16</dd>
+            <dt>Not yet deposited</dt><dd>$575.00</dd>
+            <dt>Last reconciliation</dt><dd>Sept, balanced</dd>
+            <dt>Commissary transfer due</dt><dd>$2,318.40</dd>
+            <dt>Commission this month</dt><dd>$1,104.20</dd>
+          </dl>
+          <a href="ProdigyAccounting.dc.html" style="display:inline-block;margin-top:10px;font-size:14px">Open ledger</a>
+        </div>
+        <div class="card" style="padding:16px">
+          <h2 style="margin:0 0 10px;font-size:15px">Jail staff</h2>
+          <dl class="kv">
+            <dt>Jail Administrators</dt><dd>2</dd>
+            <dt>Commissary Managers</dt><dd>2</dd>
+            <dt>Detention Officers</dt><dd>9</dd>
+            <dt>Auditor logins</dt><dd>1 active</dd>
+          </dl>
+          <a href="AdminUsers.dc.html" style="display:inline-block;margin-top:10px;font-size:14px">Manage users</a>
+        </div>
+        <div class="card" style="padding:16px">
+          <h2 style="margin:0 0 10px;font-size:15px">Open support items</h2>
+          <div style="font-size:14px;display:flex;flex-direction:column;gap:8px">
+            <div><span class="chip warn">Request</span> Turn on card-on-file (waiting on processor)</div>
+            <div><span class="chip off">Closed 10/12</span> Lockdown Phone Connector restart</div>
+          </div>
+          <a href="ProdigySupport.dc.html" style="display:inline-block;margin-top:10px;font-size:14px">Support queue</a>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1120}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

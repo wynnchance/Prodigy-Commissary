@@ -36,7 +36,8 @@ python3 build.py source docs
 
 | Part | Screens | State |
 | --- | --- | --- |
-| Prodigy shell and navigation | Main, Resident, Facility | First draft |
+| Prodigy Admin | All facilities, facility page, finances, support queue | Draft |
+| Prodigy first pass (superseded) | Main, Resident, Facility | Kept for reference |
 | Detention Officer | Home, Inmate, Deposit, Bill/Fix, New inmate | Draft |
 | Commissary Manager | Today, Drawer, Bank deposit, Reconcile, Releases, Orders | Draft |
 | Auditor | Report library, sample report, read-only ledger | Draft |

@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Prodigy Admin All Facilities</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap">
+<style>
+body{margin:0;font-family:'Source Sans 3',system-ui,sans-serif;color:#1b2538;background:#f4f6f9}
+a{color:#1b5fb4}a:hover{color:#0f3f7d}
+.nav a{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:8px;color:#c7d0dd;text-decoration:none;font-size:15px;min-height:44px;box-sizing:border-box}
+.nav a:hover{background:#2a3650;color:#fff}
+.nav a.on{background:#1b5fb4;color:#fff;font-weight:600}
+.navh{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#7b889c;padding:14px 12px 4px;font-weight:700}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 16px;border-radius:8px;border:1px solid #cdd5e0;background:#fff;color:#1b2538;font:600 15px 'Source Sans 3',sans-serif;cursor:pointer;text-decoration:none}
+.btn.p{background:#1b5fb4;border-color:#1b5fb4;color:#fff}
+.btn.s{min-height:36px;padding:0 12px;font-size:14px}
+.card{background:#fff;border:1px solid #e3e8ef;border-radius:12px}
+.chip{display:inline-block;padding:2px 10px;border-radius:999px;font-size:13px;font-weight:600}
+.ok{background:#dcf5e6;color:#166534}.warn{background:#fff1d6;color:#8a4b00}.off{background:#e8ecf2;color:#4a5668}.bad{background:#fde4e1;color:#9f1d12}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th{text-align:left;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#5a6779;padding:10px 12px;border-bottom:1px solid #e3e8ef}
+td{padding:10px 12px;border-bottom:1px solid #eef1f5;vertical-align:middle}
+.kpi{padding:16px}
+.kpi b{display:block;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#5a6779}
+.kpi span{display:block;font-size:28px;font-weight:700}
+.kpi small{color:#5a6779;font-size:13px}
+</style>
+</head>
+<body>
+
+
+<div style="display:flex;flex-wrap:wrap;min-height:1040px">
+  <nav class="nav" style="width:236px;background:#1b2538;padding:16px 12px;box-sizing:border-box;display:flex;flex-direction:column">
+    <div style="display:flex;align-items:center;gap:10px;padding:4px 12px 4px;color:#fff;font-weight:700;font-size:18px">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#5aa9ff" stroke-width="2" aria-hidden="true"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 12l9 4 9-4"/><path d="M3 17l9 4 9-4"/></svg>
+      Prodigy Admin
+    </div>
+    <div style="padding:0 12px 10px;color:#7b889c;font-size:13px">All facilities</div>
+    <a href="ProdigyHome.html" class="on">All facilities</a>
+    <a href="ProdigySupport.html">Support queue</a>
+    <div class="navh">Operate</div>
+    <a href="OfficerInmate.html">Residents</a>
+    <a href="ManagerOrders.html">Orders and batches</a>
+    <a href="ProdigyAccounting.html">Finances</a>
+    <a href="AuditorHome.html">Reports</a>
+    <div class="navh">Catalog</div>
+    <a href="#products">Products</a>
+    <a href="#warehouses">Warehouses</a>
+    <div class="navh">Setup</div>
+    <a href="ProdigyFacility.html">Facilities</a>
+    <a href="#rules">Rules</a>
+    <a href="#customers">Customers</a>
+    <a href="#kiosks">Kiosks</a>
+    <a href="#admins">Admins and settings</a>
+    <div style="flex:1"></div>
+    <div style="border-top:1px solid #2a3650;padding:12px;color:#c7d0dd;font-size:14px">Chance Wynn<br><span style="color:#7b889c">Prodigy Support</span></div>
+    <a href="#logout" style="min-height:40px">Log out</a>
+  </nav>
+
+  <main style="flex:999 1 560px;min-width:0;display:flex;flex-direction:column">
+    <header style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;padding:14px 28px;background:#fff;border-bottom:1px solid #e3e8ef">
+      <label for="g5" style="position:absolute;left:-9999px">Search everything</label>
+      <input id="g5" type="search" placeholder="Search residents, facilities, items, orders, kiosks" style="flex:1 1 320px;max-width:520px;min-height:44px;padding:0 14px;border:1px solid #cdd5e0;border-radius:8px;font:15px 'Source Sans 3',sans-serif;box-sizing:border-box">
+      <label for="fac5" style="font-size:14px;color:#5a6779">Facility</label>
+      <select id="fac5" style="min-height:44px;padding:0 12px;border:1px solid #cdd5e0;border-radius:8px;font:15px 'Source Sans 3',sans-serif;background:#fff"><option>All facilities (12)</option><option>Atoka County Jail</option><option>Cincinnati Correctional Facility</option><option>Douglas</option></select>
+      <div style="flex:1"></div>
+      <a class="btn" href="#support" style="min-height:40px">Support line (866) 700-4545 x1003</a>
+    </header>
+
+    <div style="padding:24px 28px;display:flex;flex-direction:column;gap:20px">
+      <div>
+        <h1 style="margin:0;font-size:26px">All facilities, Friday October 16</h1>
+        <div style="color:#5a6779;font-size:15px;margin-top:4px">Fleet health first, then what needs Prodigy's hand. Pick a facility above to drop into its page.</div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(5, minmax(0, 1fr));gap:16px">
+        <div class="card kpi"><b>Facilities</b><span>12</span><small>2 installing (Ector, Hudspeth)</small></div>
+        <div class="card kpi"><b>Open orders</b><span>3,147</span><small>21 carts waiting on a decision</small></div>
+        <div class="card kpi"><b>Failed batches and tasks</b><span style="color:#9f1d12">3</span><small>Cincinnati, Douglas, Chicago</small></div>
+        <div class="card kpi"><b>JMS feeds</b><span>11 of 12</span><small><span class="chip warn">Douglas stale 6h</span></small></div>
+        <div class="card kpi"><b>Open support items</b><span>7</span><small>2 from jail staff today</small></div>
+      </div>
+
+      <div class="card" style="overflow:hidden">
+        <div style="padding:14px 16px;border-bottom:1px solid #e3e8ef;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:10px">
+          <h2 style="margin:0;font-size:17px">Facilities</h2>
+          <div style="display:flex;gap:8px"><select aria-label="Sort" style="min-height:36px;padding:0 10px;border:1px solid #cdd5e0;border-radius:8px;font:14px 'Source Sans 3',sans-serif;background:#fff"><option>Needs attention first</option><option>Name</option><option>State</option><option>Open orders</option></select></div>
+        </div>
+        <div style="overflow-x:auto">
+        <table>
+          <thead><tr><th>Facility</th><th>State</th><th>Residents</th><th>Open orders</th><th>JMS feed</th><th>Last close-out</th><th>Reconciled</th><th>Status</th><th></th></tr></thead>
+          <tbody>
+            <tr><td><strong>Douglas</strong><br><span style="color:#5a6779;font-size:13px">S133713379, Superior WI</span></td><td>WI</td><td>212</td><td>0</td><td><span class="chip warn">Stale 6h</span></td><td>Yesterday</td><td>Aug</td><td><span class="chip bad">Import task failed</span></td><td><a class="btn s" href="ProdigyFacility.html">Open</a></td></tr>
+            <tr><td><strong>Cincinnati Correctional Facility</strong><br><span style="color:#5a6779;font-size:13px">S001033001</span></td><td>OH</td><td>1,180</td><td>1,127</td><td><span class="chip ok">OK</span></td><td>Today</td><td>Sept</td><td><span class="chip bad">Batch 200003 failed</span></td><td><a class="btn s" href="ProdigyFacility.html">Open</a></td></tr>
+            <tr><td><strong>Chicago Correctional Facility</strong><br><span style="color:#5a6779;font-size:13px">S001033005</span></td><td>IL</td><td>640</td><td>420</td><td><span class="chip ok">OK</span></td><td>Today</td><td><span class="chip warn">July</span></td><td><span class="chip warn">Reconciliation 2 months behind</span></td><td><a class="btn s" href="ProdigyFacility.html">Open</a></td></tr>
+            <tr><td><strong>Atoka County Jail</strong><br><span style="color:#5a6779;font-size:13px">S001022023</span></td><td>OK</td><td>38</td><td>0</td><td><span class="chip ok">OK</span></td><td>In progress</td><td>Sept</td><td><span class="chip ok">Healthy</span></td><td><a class="btn s" href="ProdigyFacility.html">Open</a></td></tr>
+            <tr><td><strong>Pottawatomie County</strong><br><span style="color:#5a6779;font-size:13px">S001022031</span></td><td>OK</td><td>146</td><td>0</td><td><span class="chip ok">OK</span></td><td>Today</td><td>Sept</td><td><span class="chip ok">Healthy</span></td><td><a class="btn s" href="ProdigyFacility.html">Open</a></td></tr>
+            <tr><td><strong>Ector County</strong><br><span style="color:#5a6779;font-size:13px">S001048135, Odessa TX</span></td><td>TX</td><td>0</td><td>0</td><td><span class="chip off">Not connected</span></td><td></td><td></td><td><span class="chip off">Installing, go-live 10/31</span></td><td><a class="btn s" href="ProdigyFacility.html">Open</a></td></tr>
+            <tr><td colspan="9" style="color:#5a6779">6 more, all healthy. <a href="#all">Show all 12</a></td></tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(2, minmax(0, 1fr));gap:20px;align-items:start">
+        <div class="card" style="padding:16px">
+          <h2 style="margin:0 0 10px;font-size:15px">Needs Prodigy's hand</h2>
+          <div style="display:flex;flex-direction:column;gap:10px;font-size:14px">
+            <div><span class="chip bad">Batch</span> Cincinnati batch 200003 failed: warehouse rejected 2 item codes not in its catalog. <a href="ProdigySupport.html">Fix and retry</a></div>
+            <div><span class="chip bad">Task</span> Douglas inmate import failed 6h ago: JMS endpoint timed out. <a href="ProdigySupport.html">Retry</a></div>
+            <div><span class="chip warn">Request</span> Atoka asks to turn on card-on-file. Processor not connected yet. <a href="ProdigyFacility.html">Facility setup</a></div>
+            <div><span class="chip warn">Request</span> Chicago Jail Admin asks for an auditor login (county auditor, 11/01 to 11/30). <a href="AdminUsers.html">Create</a></div>
+          </div>
+        </div>
+        <div class="card" style="padding:16px">
+          <h2 style="margin:0 0 10px;font-size:15px">Recent activity across facilities</h2>
+          <div style="display:flex;flex-direction:column;gap:8px;font-size:14px">
+            <div><strong>Release note v1.0.23</strong> published: release form gating, drawer verification. <span style="color:#5a6779">Today 8:00 AM</span></div>
+            <div><strong>Atoka</strong> drawer short $5.00, noted by Pruitt. <span style="color:#5a6779">10:20 AM</span></div>
+            <div><strong>Cincinnati</strong> 1,127 orders posted to Prodigy Main Warehouse. <span style="color:#5a6779">6:00 AM</span></div>
+            <div><strong>Mills County</strong> facility created, install mid-November. <span style="color:#5a6779">Yesterday</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+
+</body>
+</html>

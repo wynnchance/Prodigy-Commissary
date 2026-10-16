@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Prodigy Admin Support Queue</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap">
+<style>
+body{margin:0;font-family:'Source Sans 3',system-ui,sans-serif;color:#1b2538;background:#f4f6f9}
+a{color:#1b5fb4}a:hover{color:#0f3f7d}
+.nav a{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:8px;color:#c7d0dd;text-decoration:none;font-size:15px;min-height:44px;box-sizing:border-box}
+.nav a:hover{background:#2a3650;color:#fff}
+.nav a.on{background:#1b5fb4;color:#fff;font-weight:600}
+.navh{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#7b889c;padding:14px 12px 4px;font-weight:700}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 16px;border-radius:8px;border:1px solid #cdd5e0;background:#fff;color:#1b2538;font:600 15px 'Source Sans 3',sans-serif;cursor:pointer;text-decoration:none}
+.btn.p{background:#1b5fb4;border-color:#1b5fb4;color:#fff}
+.btn.s{min-height:36px;padding:0 12px;font-size:14px}
+.card{background:#fff;border:1px solid #e3e8ef;border-radius:12px}
+.chip{display:inline-block;padding:2px 10px;border-radius:999px;font-size:13px;font-weight:600}
+.ok{background:#dcf5e6;color:#166534}.warn{background:#fff1d6;color:#8a4b00}.off{background:#e8ecf2;color:#4a5668}.bad{background:#fde4e1;color:#9f1d12}
+.tab{padding:12px 16px;border-bottom:3px solid transparent;color:#5a6779;font-weight:600;text-decoration:none;font-size:15px;min-height:44px;box-sizing:border-box;display:inline-flex;align-items:center;gap:8px}
+.tab.on{color:#1b5fb4;border-color:#1b5fb4}
+.item{display:flex;gap:16px;align-items:flex-start;padding:16px;border-bottom:1px solid #eef1f5}
+.item:last-child{border-bottom:0}
+.item .t{flex:1;min-width:0;font-size:15px}
+.item small{display:block;color:#5a6779;font-size:13px;margin-top:2px}
+.why{margin-top:8px;padding:10px 12px;border-radius:8px;background:#f9fafc;border:1px solid #e3e8ef;font-size:14px}
+</style>
+</head>
+<body>
+
+
+<div style="display:flex;flex-wrap:wrap;min-height:1000px">
+  <nav class="nav" style="width:236px;background:#1b2538;padding:16px 12px;box-sizing:border-box;display:flex;flex-direction:column">
+    <div style="display:flex;align-items:center;gap:10px;padding:4px 12px 4px;color:#fff;font-weight:700;font-size:18px">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#5aa9ff" stroke-width="2" aria-hidden="true"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 12l9 4 9-4"/><path d="M3 17l9 4 9-4"/></svg>
+      Prodigy Admin
+    </div>
+    <div style="padding:0 12px 10px;color:#7b889c;font-size:13px">All facilities</div>
+    <a href="ProdigyHome.html">All facilities</a>
+    <a href="ProdigySupport.html" class="on">Support queue</a>
+    <div class="navh">Operate</div>
+    <a href="OfficerInmate.html">Residents</a>
+    <a href="ManagerOrders.html">Orders and batches</a>
+    <a href="ProdigyAccounting.html">Finances</a>
+    <a href="AuditorHome.html">Reports</a>
+    <div class="navh">Catalog</div>
+    <a href="#products">Products</a>
+    <a href="#warehouses">Warehouses</a>
+    <div class="navh">Setup</div>
+    <a href="ProdigyFacility.html">Facilities</a>
+    <a href="#rules">Rules</a>
+    <a href="#customers">Customers</a>
+    <a href="#kiosks">Kiosks</a>
+    <a href="#admins">Admins and settings</a>
+    <div style="flex:1"></div>
+    <div style="border-top:1px solid #2a3650;padding:12px;color:#c7d0dd;font-size:14px">Chance Wynn<br><span style="color:#7b889c">Prodigy Support</span></div>
+    <a href="#logout" style="min-height:40px">Log out</a>
+  </nav>
+
+  <main style="flex:999 1 560px;min-width:0;display:flex;flex-direction:column">
+    <header style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;padding:14px 28px;background:#fff;border-bottom:1px solid #e3e8ef">
+      <label for="g8" style="position:absolute;left:-9999px">Search everything</label>
+      <input id="g8" type="search" placeholder="Search residents, facilities, items, orders, kiosks" style="flex:1 1 320px;max-width:520px;min-height:44px;padding:0 14px;border:1px solid #cdd5e0;border-radius:8px;font:15px 'Source Sans 3',sans-serif;box-sizing:border-box">
+      <label for="fac8" style="font-size:14px;color:#5a6779">Facility</label>
+      <select id="fac8" style="min-height:44px;padding:0 12px;border:1px solid #cdd5e0;border-radius:8px;font:15px 'Source Sans 3',sans-serif;background:#fff"><option>All facilities (12)</option><option>Atoka County Jail</option></select>
+    </header>
+
+    <div style="padding:24px 28px;display:flex;flex-direction:column;gap:20px">
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;align-items:flex-end">
+        <div>
+          <h1 style="margin:0;font-size:26px">Support queue</h1>
+          <div style="color:#5a6779;font-size:15px;margin-top:4px">Everything that stopped on its own plus what jail staff asked for. Each item says why it stopped and what to do.</div>
+        </div>
+        <button class="btn p" type="button">New support item</button>
+      </div>
+
+      <div class="card" style="overflow:hidden">
+        <div style="display:flex;flex-wrap:wrap;border-bottom:1px solid #e3e8ef;padding:0 8px">
+          <a href="#failed" class="tab on">Failed automatically <span class="chip bad">3</span></a>
+          <a href="#requests" class="tab">Requests from jails <span class="chip warn">4</span></a>
+          <a href="#mine" class="tab">Assigned to me</a>
+          <a href="#closed" class="tab">Closed this week</a>
+        </div>
+
+        <div class="item">
+          <span class="chip bad">Batch</span>
+          <div class="t"><strong>Cincinnati batch 200004 to Prodigy Main Warehouse rejected</strong><small>Today 6:02 AM. 1,127 orders, $18,204.12. Previous batch 200003 failed the same way on 10/06.</small>
+            <div class="why"><strong>Why:</strong> the warehouse does not recognize 2 item codes in 14 orders (6305 "Test Product", 7287 "Pork Filled Dumplings"). The other 1,113 orders are fine.<br><strong>Fix:</strong> remove or remap the 2 items, then resend. Or send the 1,113 clean orders now and hold the 14.</div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:8px"><button class="btn s p" type="button">Send clean orders, hold 14</button><button class="btn s" type="button">Remap items</button><button class="btn s" type="button">View raw log</button></div>
+        </div>
+
+        <div class="item">
+          <span class="chip bad">Task</span>
+          <div class="t"><strong>Douglas inmate import has not run since 4:50 AM</strong><small>Runs every 15 minutes. 6 hours behind. 212 residents, bookings and releases may be missing.</small>
+            <div class="why"><strong>Why:</strong> the JMS endpoint timed out 24 times in a row (connection refused). Likely the county's server or firewall.<br><strong>Fix:</strong> retry now; if it fails again, call Douglas IT. Jail staff can create accounts manually meanwhile; they are flagged for merge.</div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:8px"><button class="btn s p" type="button">Retry now</button><button class="btn s" type="button">Notify Douglas staff</button><button class="btn s" type="button">View raw log</button></div>
+        </div>
+
+        <div class="item">
+          <span class="chip warn">Task</span>
+          <div class="t"><strong>Chicago cart processing ran but skipped 8 carts</strong><small>Today 2:00 PM. 412 carts posted, 8 skipped.</small>
+            <div class="why"><strong>Why:</strong> 8 inmates have a facility rule that blocks one item each, and nobody at Chicago has reviewed the "Needs a decision" list in 3 days.<br><strong>Fix:</strong> nothing broken on our side. Nudge the Chicago Commissary Manager.</div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:8px"><button class="btn s" type="button">Email Chicago Manager</button><a class="btn s" href="ManagerOrders.html">View as Chicago Manager</a></div>
+        </div>
+      </div>
+
+      <div class="card" style="overflow:hidden">
+        <div style="padding:14px 16px;border-bottom:1px solid #e3e8ef"><h2 style="margin:0;font-size:17px">Requests from jails</h2></div>
+        <div class="item">
+          <span class="chip warn">Setup</span>
+          <div class="t"><strong>Atoka: turn on card-on-file for phone deposits</strong><small>Asked by Capt. Hale 10/14. The setting is on at the jail; the card processor is not connected to the new software yet.</small></div>
+          <div style="display:flex;flex-direction:column;gap:8px"><a class="btn s p" href="ProdigyFacility.html">Connect processor</a><button class="btn s" type="button">Reply</button></div>
+        </div>
+        <div class="item">
+          <span class="chip warn">Access</span>
+          <div class="t"><strong>Chicago: auditor login for the county auditor, 11/01 to 11/30</strong><small>Asked by the Chicago Jail Administrator today. They can also create it themselves.</small></div>
+          <div style="display:flex;flex-direction:column;gap:8px"><a class="btn s p" href="AdminUsers.html">Create login</a><button class="btn s" type="button">Reply</button></div>
+        </div>
+        <div class="item">
+          <span class="chip off">Question</span>
+          <div class="t"><strong>Pottawatomie: "where did the Transactions page go?"</strong><small>Ofc. Lane, after the v1.0.23 update. Deposits now live on the inmate's page.</small></div>
+          <div style="display:flex;flex-direction:column;gap:8px"><button class="btn s" type="button">Send the 1-minute guide</button><a class="btn s" href="OfficerHome.html">View as Officer</a></div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+
+</body>
+</html>

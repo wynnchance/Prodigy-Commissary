@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Prodigy Admin Accounting</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap">
+<style>
+body{margin:0;font-family:'Source Sans 3',system-ui,sans-serif;color:#1b2538;background:#f4f6f9}
+a{color:#1b5fb4}a:hover{color:#0f3f7d}
+.nav a{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:8px;color:#c7d0dd;text-decoration:none;font-size:15px;min-height:44px;box-sizing:border-box}
+.nav a:hover{background:#2a3650;color:#fff}
+.nav a.on{background:#1b5fb4;color:#fff;font-weight:600}
+.navh{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#7b889c;padding:14px 12px 4px;font-weight:700}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 16px;border-radius:8px;border:1px solid #cdd5e0;background:#fff;color:#1b2538;font:600 15px 'Source Sans 3',sans-serif;cursor:pointer;text-decoration:none}
+.btn.p{background:#1b5fb4;border-color:#1b5fb4;color:#fff}
+.btn.s{min-height:36px;padding:0 12px;font-size:14px}
+.card{background:#fff;border:1px solid #e3e8ef;border-radius:12px}
+.chip{display:inline-block;padding:2px 10px;border-radius:999px;font-size:13px;font-weight:600}
+.ok{background:#dcf5e6;color:#166534}.warn{background:#fff1d6;color:#8a4b00}.off{background:#e8ecf2;color:#4a5668}.bad{background:#fde4e1;color:#9f1d12}
+.tab{padding:12px 16px;border-bottom:3px solid transparent;color:#5a6779;font-weight:600;text-decoration:none;font-size:15px;min-height:44px;box-sizing:border-box;display:inline-flex;align-items:center;gap:8px}
+.tab.on{color:#1b5fb4;border-color:#1b5fb4}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th{text-align:left;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#5a6779;padding:10px 12px;border-bottom:1px solid #e3e8ef}
+td{padding:10px 12px;border-bottom:1px solid #eef1f5;vertical-align:middle}
+.kpi{padding:16px}
+.kpi b{display:block;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#5a6779}
+.kpi span{display:block;font-size:26px;font-weight:700}
+.kpi small{color:#5a6779;font-size:13px}
+</style>
+</head>
+<body>
+
+
+<div style="display:flex;flex-wrap:wrap;min-height:1040px">
+  <nav class="nav" style="width:236px;background:#1b2538;padding:16px 12px;box-sizing:border-box;display:flex;flex-direction:column">
+    <div style="display:flex;align-items:center;gap:10px;padding:4px 12px 4px;color:#fff;font-weight:700;font-size:18px">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#5aa9ff" stroke-width="2" aria-hidden="true"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 12l9 4 9-4"/><path d="M3 17l9 4 9-4"/></svg>
+      Prodigy Admin
+    </div>
+    <div style="padding:0 12px 10px;color:#7b889c;font-size:13px">All facilities</div>
+    <a href="ProdigyHome.html">All facilities</a>
+    <a href="ProdigySupport.html">Support queue</a>
+    <div class="navh">Operate</div>
+    <a href="OfficerInmate.html">Residents</a>
+    <a href="ManagerOrders.html">Orders and batches</a>
+    <a href="ProdigyAccounting.html" class="on">Finances</a>
+    <a href="AuditorHome.html">Reports</a>
+    <div class="navh">Catalog</div>
+    <a href="#products">Products</a>
+    <a href="#warehouses">Warehouses</a>
+    <div class="navh">Setup</div>
+    <a href="ProdigyFacility.html">Facilities</a>
+    <a href="#rules">Rules</a>
+    <a href="#customers">Customers</a>
+    <a href="#kiosks">Kiosks</a>
+    <a href="#admins">Admins and settings</a>
+    <div style="flex:1"></div>
+    <div style="border-top:1px solid #2a3650;padding:12px;color:#c7d0dd;font-size:14px">A. Reyes<br><span style="color:#7b889c">Prodigy Accounting</span></div>
+    <a href="#logout" style="min-height:40px">Log out</a>
+  </nav>
+
+  <main style="flex:999 1 560px;min-width:0;display:flex;flex-direction:column">
+    <header style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;padding:14px 28px;background:#fff;border-bottom:1px solid #e3e8ef">
+      <label for="g7" style="position:absolute;left:-9999px">Search everything</label>
+      <input id="g7" type="search" placeholder="Search by entry number, receipt, inmate, or facility" style="flex:1 1 320px;max-width:520px;min-height:44px;padding:0 14px;border:1px solid #cdd5e0;border-radius:8px;font:15px 'Source Sans 3',sans-serif;box-sizing:border-box">
+      <label for="fac7" style="font-size:14px;color:#5a6779">Facility</label>
+      <select id="fac7" style="min-height:44px;padding:0 12px;border:1px solid #cdd5e0;border-radius:8px;font:15px 'Source Sans 3',sans-serif;background:#fff"><option>All facilities (12)</option><option>Atoka County Jail</option></select>
+      <label for="per7" style="font-size:14px;color:#5a6779">Period</label>
+      <select id="per7" style="min-height:44px;padding:0 12px;border:1px solid #cdd5e0;border-radius:8px;font:15px 'Source Sans 3',sans-serif;background:#fff"><option>October 2026 to date</option><option>September 2026</option></select>
+    </header>
+
+    <div style="padding:24px 28px;display:flex;flex-direction:column;gap:20px">
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;align-items:flex-end">
+        <div>
+          <h1 style="margin:0;font-size:26px">Finances, all facilities</h1>
+          <div style="color:#5a6779;font-size:15px;margin-top:4px">Prodigy's accounting view. The ledger, chart of accounts, commissions, and bank accounts the jails never see.</div>
+        </div>
+        <div style="display:flex;gap:10px"><button class="btn" type="button">Export</button><button class="btn p" type="button">Post a journal entry</button></div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(5, minmax(0, 1fr));gap:16px">
+        <div class="card kpi"><b>Inmate balances held</b><span>$412,880.57</span><small>12 facilities</small></div>
+        <div class="card kpi"><b>Commissary payable</b><span>$38,412.90</span><small>Owed from trust to commissary</small></div>
+        <div class="card kpi"><b>Commissions, Oct to date</b><span>$21,308.14</span><small>Invoiced 10/15</small></div>
+        <div class="card kpi"><b>Warehouse orders open</b><span>$61,922.00</span><small>3,147 orders</small></div>
+        <div class="card kpi"><b>Unreconciled facilities</b><span style="color:#8a4b00">1</span><small>Chicago, 2 months</small></div>
+      </div>
+
+      <div class="card" style="overflow:hidden">
+        <div style="display:flex;flex-wrap:wrap;border-bottom:1px solid #e3e8ef;padding:0 8px">
+          <a href="#ledger" class="tab on">Ledger</a>
+          <a href="#accounts" class="tab">Chart of accounts</a>
+          <a href="#commissions" class="tab">Commissions</a>
+          <a href="#bank" class="tab">Bank accounts</a>
+          <a href="#funds" class="tab">Funds</a>
+          <a href="#checks" class="tab">Checks and disbursements</a>
+          <a href="#kiosk" class="tab">Kiosk deposits</a>
+        </div>
+        <div style="padding:12px 16px;display:flex;flex-wrap:wrap;gap:10px;align-items:center;border-bottom:1px solid #eef1f5">
+          <select aria-label="Account" style="min-height:40px;padding:0 10px;border:1px solid #cdd5e0;border-radius:8px;font:14px 'Source Sans 3',sans-serif;background:#fff"><option>All accounts</option><option>Resident Balances</option><option>Commissary Payable</option><option>Over/Short</option></select>
+          <select aria-label="Type" style="min-height:40px;padding:0 10px;border:1px solid #cdd5e0;border-radius:8px;font:14px 'Source Sans 3',sans-serif;background:#fff"><option>All entry types</option><option>Deposits</option><option>Purchases</option><option>Transfers</option><option>Fixes and reversals</option><option>Journal entries</option></select>
+          <span style="color:#5a6779;font-size:13px">Every entry shows the plain-language jail action that created it. Only Prodigy Accounting can post a journal entry directly, and each one needs a reason.</span>
+        </div>
+        <div style="overflow-x:auto">
+        <table>
+          <thead><tr><th>Date</th><th>Entry</th><th>Facility</th><th>Jail action and receipt</th><th>Debit account</th><th>Credit account</th><th style="text-align:right">Amount</th><th>By</th></tr></thead>
+          <tbody>
+            <tr><td>10/16 10:40</td><td>T-51204</td><td>Atoka</td><td>Commissary transfer prepared (awaiting JA approval)</td><td>Commissary Payable</td><td>Cash in Transit</td><td style="text-align:right">$2,318.40</td><td>Pruitt</td></tr>
+            <tr><td>10/16 09:15</td><td>T-51199</td><td>Atoka</td><td>Fix requested: void deposit #10470 (awaiting approval)</td><td>Resident Balances</td><td>Cash Drawer 1</td><td style="text-align:right">$25.00</td><td>Ramirez</td></tr>
+            <tr><td>10/16 08:52</td><td>T-51196</td><td>Atoka</td><td>Cash deposit, receipt #10482, ALEXANDER G.</td><td>Cash Drawer 1</td><td>Resident Balances</td><td style="text-align:right">$25.00</td><td>Ramirez</td></tr>
+            <tr><td>10/16 06:00</td><td>T-51150</td><td>Cincinnati</td><td>1,127 orders posted to Prodigy Main Warehouse (batch 200004)</td><td>Resident Balances</td><td>Commissary Payable</td><td style="text-align:right">$18,204.12</td><td>System</td></tr>
+            <tr><td>10/15 16:30</td><td>T-51102</td><td>All</td><td>Commission invoice INV-2026-10A posted</td><td>Accounts Receivable</td><td>Commission Income</td><td style="text-align:right">$21,308.14</td><td>Reyes</td></tr>
+            <tr><td>10/15 15:10</td><td>T-51088</td><td>Atoka</td><td>Bank deposit marked deposited, slip 10/15</td><td>Bank Account (county)</td><td>Cash in Transit</td><td style="text-align:right">$412.00</td><td>Pruitt</td></tr>
+            <tr><td>10/15 11:02</td><td>T-51071</td><td>Douglas</td><td>Journal entry: correct kiosk ACH settlement date (reason: processor posted 10/14 batch on 10/15)</td><td>Kiosk Clearing</td><td>Bank Account (county)</td><td style="text-align:right">$1,840.00</td><td>Reyes</td></tr>
+            <tr><td colspan="8" style="color:#5a6779">4,912 more entries this month. <a href="#all">Show all</a> or export.</td></tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(2, minmax(0, 1fr));gap:20px;align-items:start">
+        <div class="card" style="overflow:hidden">
+          <div style="padding:14px 16px;border-bottom:1px solid #e3e8ef"><h2 style="margin:0;font-size:16px">Commissions by facility, October to date</h2></div>
+          <table>
+            <thead><tr><th>Facility</th><th style="text-align:right">Sales</th><th>Rate</th><th style="text-align:right">Commission</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td>Cincinnati</td><td style="text-align:right">$184,220.00</td><td>12%</td><td style="text-align:right">$22,106.40</td><td><span class="chip ok">Invoiced</span></td></tr>
+              <tr><td>Chicago</td><td style="text-align:right">$71,400.00</td><td>10%</td><td style="text-align:right">$7,140.00</td><td><span class="chip ok">Invoiced</span></td></tr>
+              <tr><td>Atoka</td><td style="text-align:right">$11,042.00</td><td>10%</td><td style="text-align:right">$1,104.20</td><td><span class="chip warn">Accruing</span></td></tr>
+              <tr><td colspan="5" style="color:#5a6779">9 more. <a href="#c">Full statement</a></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card" style="overflow:hidden">
+          <div style="padding:14px 16px;border-bottom:1px solid #e3e8ef"><h2 style="margin:0;font-size:16px">Bank accounts</h2></div>
+          <table>
+            <thead><tr><th>Account</th><th>Held by</th><th style="text-align:right">Book balance</th><th>Last reconciled</th></tr></thead>
+            <tbody>
+              <tr><td>Atoka Inmate Trust Fund ****2290</td><td>County</td><td style="text-align:right">$14,258.16</td><td>Sept <span class="chip ok">OK</span></td></tr>
+              <tr><td>Chicago Inmate Trust Fund ****8812</td><td>County</td><td style="text-align:right">$98,114.02</td><td>July <span class="chip warn">Behind</span></td></tr>
+              <tr><td>Prodigy Operating ****4410</td><td>Prodigy</td><td style="text-align:right">Prodigy only</td><td>Sept <span class="chip ok">OK</span></td></tr>
+              <tr><td colspan="4" style="color:#5a6779">10 more. <a href="#b">All bank accounts</a></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+
+</body>
+</html>
