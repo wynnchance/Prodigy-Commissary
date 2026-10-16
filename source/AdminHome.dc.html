@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Jail Administrator Home</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap">
+<style>
+body{margin:0;font-family:'Source Sans 3',system-ui,sans-serif;color:#1b2538;background:#f4f6f9}
+a{color:#1b5fb4}a:hover{color:#0f3f7d}
+.nav a{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:8px;color:#c7d0dd;text-decoration:none;font-size:15px;min-height:44px;box-sizing:border-box}
+.nav a:hover{background:#2a3650;color:#fff}
+.nav a.on{background:#1b5fb4;color:#fff;font-weight:600}
+.navh{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#7b889c;padding:14px 12px 4px;font-weight:700}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 16px;border-radius:8px;border:1px solid #cdd5e0;background:#fff;color:#1b2538;font:600 15px 'Source Sans 3',sans-serif;cursor:pointer;text-decoration:none}
+.btn.p{background:#1b5fb4;border-color:#1b5fb4;color:#fff}
+.btn.s{min-height:36px;padding:0 12px;font-size:14px}
+.card{background:#fff;border:1px solid #e3e8ef;border-radius:12px}
+.chip{display:inline-block;padding:2px 10px;border-radius:999px;font-size:13px;font-weight:600}
+.ok{background:#dcf5e6;color:#166534}.warn{background:#fff1d6;color:#8a4b00}.off{background:#e8ecf2;color:#4a5668}.bad{background:#fde4e1;color:#9f1d12}
+table{border-collapse:collapse;width:100%;font-size:15px}
+th{text-align:left;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#5a6779;padding:10px 12px;border-bottom:1px solid #e3e8ef}
+td{padding:11px 12px;border-bottom:1px solid #eef1f5;vertical-align:middle}
+.kpi{padding:16px}
+.kpi b{display:block;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#5a6779}
+.kpi span{display:block;font-size:28px;font-weight:700}
+.kpi small{color:#5a6779;font-size:13px}
+</style>
+</helmet>
+<div style="display:flex;flex-wrap:wrap;min-height:1000px">
+  <nav class="nav" style="width:236px;background:#1b2538;padding:16px 12px;box-sizing:border-box;display:flex;flex-direction:column">
+    <div style="display:flex;align-items:center;gap:10px;padding:4px 12px 4px;color:#fff;font-weight:700;font-size:18px">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#5aa9ff" stroke-width="2" aria-hidden="true"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 12l9 4 9-4"/><path d="M3 17l9 4 9-4"/></svg>
+      Commissary
+    </div>
+    <div style="padding:0 12px 10px;color:#7b889c;font-size:13px">Atoka County Jail</div>
+    <a href="AdminHome.dc.html" class="on">Overview</a>
+    <div class="navh">Operate</div>
+    <a href="OfficerInmate.dc.html">Inmates</a>
+    <a href="ManagerHome.dc.html">Daily close-out</a>
+    <a href="ManagerRelease.dc.html">Releases</a>
+    <a href="ManagerOrders.dc.html">Orders</a>
+    <a href="ManagerReconcile.dc.html">Reconcile</a>
+    <a href="AuditorHome.dc.html">Reports</a>
+    <div class="navh">Manage</div>
+    <a href="AdminSettings.dc.html">Facility settings</a>
+    <a href="#rules">Inmate rules</a>
+    <a href="AdminUsers.dc.html">Users and access</a>
+    <div style="flex:1"></div>
+    <div style="border-top:1px solid #2a3650;padding:12px;color:#c7d0dd;font-size:14px">Capt. R. Hale<br><span style="color:#7b889c">Jail Administrator</span></div>
+    <a href="#logout" style="min-height:40px">Log out</a>
+  </nav>
+
+  <main style="flex:999 1 560px;min-width:0;display:flex;flex-direction:column">
+    <header style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;padding:14px 28px;background:#fff;border-bottom:1px solid #e3e8ef">
+      <label for="find4" style="position:absolute;left:-9999px">Find an inmate</label>
+      <input id="find4" type="search" placeholder="Find an inmate by name, booking, or account number" style="flex:1 1 320px;max-width:520px;min-height:44px;padding:0 14px;border:1px solid #cdd5e0;border-radius:8px;font:15px 'Source Sans 3',sans-serif;box-sizing:border-box">
+      <div style="flex:1"></div>
+      <div style="font-weight:700">Atoka County Jail</div>
+    </header>
+
+    <div style="padding:24px 28px;display:flex;flex-direction:column;gap:20px">
+      <div>
+        <h1 style="margin:0;font-size:26px">Atoka County Jail, Friday October 16</h1>
+        <div style="color:#5a6779;font-size:15px;margin-top:4px">What needs your sign-off, and whether the money side is in order.</div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(5, minmax(0, 1fr));gap:16px">
+        <div class="card kpi"><b>Inmates with accounts</b><span>38</span><small>3 booked today</small></div>
+        <div class="card kpi"><b>All inmate balances</b><span>$14,208.16</span><small>$230.00 on hold</small></div>
+        <div class="card kpi"><b>Not yet deposited</b><span style="color:#8a4b00">$575.00</span><small>Close-out in progress</small></div>
+        <div class="card kpi"><b>Last reconciliation</b><span>Sept</span><small><span class="chip ok">Balanced</span></small></div>
+        <div class="card kpi"><b>Commissary transfer</b><span style="color:#8a4b00">$2,318.40</span><small>Due this week</small></div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(3, minmax(0, 1fr));gap:20px;align-items:start">
+        <div class="card" style="grid-column:span 2;overflow:hidden">
+          <div style="padding:14px 16px;border-bottom:1px solid #e3e8ef;display:flex;justify-content:space-between;align-items:center"><h2 style="margin:0;font-size:17px">Waiting on you</h2><span class="chip warn">3 items</span></div>
+          <table>
+            <thead><tr><th>What</th><th>Who asked</th><th>When</th><th></th></tr></thead>
+            <tbody>
+              <tr><td><strong>Void a $25.00 deposit after bank deposit</strong><br><span style="color:#5a6779;font-size:13px">ALEXANDER, GUY. Receipt #10470, deposited 10/15. Reason: "Family member paid twice at the window, refunded in cash."</span></td><td>Ofc. Ramirez</td><td>Today 9:15 AM</td><td style="white-space:nowrap"><button class="btn s" type="button">Approve</button> <button class="btn s" type="button">Deny</button></td></tr>
+              <tr><td><strong>Commissary transfer $2,318.40</strong><br><span style="color:#5a6779;font-size:13px">Trust fund to Sheriff's Commissary Account for sales 10/02 to 10/16. Sales report attached.</span></td><td>D. Pruitt</td><td>Today 10:40 AM</td><td style="white-space:nowrap"><button class="btn s" type="button">Approve</button> <button class="btn s" type="button">Deny</button></td></tr>
+              <tr><td><strong>Write off $12.60 unpaid medical charge</strong><br><span style="color:#5a6779;font-size:13px">PRICE, JORDAN, released 10/14 with $6.20 and $18.80 owed. $6.20 applied; remainder uncollectable.</span></td><td>D. Pruitt</td><td>Yesterday</td><td style="white-space:nowrap"><button class="btn s" type="button">Approve</button> <button class="btn s" type="button">Deny</button></td></tr>
+            </tbody>
+          </table>
+          <div style="padding:10px 16px;font-size:13px;color:#5a6779">Approvals are only required where you turned them on in <a href="AdminSettings.dc.html">Facility settings</a>. Everything approved here shows in the Adjustments report with your name.</div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:16px">
+          <div class="card" style="padding:16px">
+            <h2 style="margin:0 0 10px;font-size:15px">Exceptions this week</h2>
+            <div style="display:flex;flex-direction:column;gap:8px;font-size:14px">
+              <div><span class="chip bad">Short $5.00</span> Drawer count 10/16, note by Pruitt</div>
+              <div><span class="chip warn">Late deposit</span> 10/13 receipts deposited 10/15 (2 days)</div>
+              <div><span class="chip warn">Stale check</span> #1192, $84.00, 95 days</div>
+              <div><span class="chip off">2 fixes</span> Both same-day, both deposits moved to the right inmate</div>
+            </div>
+            <a href="AuditorHome.dc.html" style="display:inline-block;margin-top:10px;font-size:14px">Open reports</a>
+          </div>
+          <div class="card" style="padding:16px">
+            <h2 style="margin:0 0 10px;font-size:15px">Staff on the system</h2>
+            <div style="display:flex;flex-direction:column;gap:6px;font-size:14px">
+              <div style="display:flex;justify-content:space-between"><span>Detention Officers</span><span>9</span></div>
+              <div style="display:flex;justify-content:space-between"><span>Commissary Managers</span><span>2</span></div>
+              <div style="display:flex;justify-content:space-between"><span>Jail Administrators</span><span>2</span></div>
+              <div style="display:flex;justify-content:space-between"><span>Auditor logins (active)</span><span>1, ends 11/15</span></div>
+            </div>
+            <a href="AdminUsers.dc.html" style="display:inline-block;margin-top:10px;font-size:14px">Manage users</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1000}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Jail Administrator Users</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap">
+<style>
+body{margin:0;font-family:'Source Sans 3',system-ui,sans-serif;color:#1b2538;background:#f4f6f9}
+a{color:#1b5fb4}a:hover{color:#0f3f7d}
+.nav a{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:8px;color:#c7d0dd;text-decoration:none;font-size:15px;min-height:44px;box-sizing:border-box}
+.nav a:hover{background:#2a3650;color:#fff}
+.nav a.on{background:#1b5fb4;color:#fff;font-weight:600}
+.navh{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#7b889c;padding:14px 12px 4px;font-weight:700}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 16px;border-radius:8px;border:1px solid #cdd5e0;background:#fff;color:#1b2538;font:600 15px 'Source Sans 3',sans-serif;cursor:pointer;text-decoration:none}
+.btn.p{background:#1b5fb4;border-color:#1b5fb4;color:#fff}
+.btn.s{min-height:36px;padding:0 12px;font-size:14px}
+.card{background:#fff;border:1px solid #e3e8ef;border-radius:12px}
+.chip{display:inline-block;padding:2px 10px;border-radius:999px;font-size:13px;font-weight:600}
+.ok{background:#dcf5e6;color:#166534}.warn{background:#fff1d6;color:#8a4b00}.off{background:#e8ecf2;color:#4a5668}.teal{background:#d8f1f1;color:#0f5e5e}
+table{border-collapse:collapse;width:100%;font-size:15px}
+th{text-align:left;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#5a6779;padding:10px 12px;border-bottom:1px solid #e3e8ef}
+td{padding:11px 12px;border-bottom:1px solid #eef1f5;vertical-align:middle}
+.f{display:flex;flex-direction:column;gap:6px;font-size:14px;color:#5a6779}
+.f input,.f select{min-height:44px;padding:0 12px;border:1px solid #cdd5e0;border-radius:8px;font:15px 'Source Sans 3',sans-serif;background:#fff;color:#1b2538}
+.help{font-size:13px;color:#5a6779}
+.role{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;border:2px solid #cdd5e0;border-radius:8px;font-size:14px}
+.role.on{border-color:#1b5fb4;background:#e3eefc}
+.role input{width:18px;height:18px;margin:2px 0 0}
+.role small{display:block;color:#5a6779;font-size:12px}
+</style>
+</head>
+<body>
+
+
+<div style="display:flex;flex-wrap:wrap;min-height:1000px">
+  <nav class="nav" style="width:236px;background:#1b2538;padding:16px 12px;box-sizing:border-box;display:flex;flex-direction:column">
+    <div style="display:flex;align-items:center;gap:10px;padding:4px 12px 4px;color:#fff;font-weight:700;font-size:18px">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#5aa9ff" stroke-width="2" aria-hidden="true"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 12l9 4 9-4"/><path d="M3 17l9 4 9-4"/></svg>
+      Commissary
+    </div>
+    <div style="padding:0 12px 10px;color:#7b889c;font-size:13px">Atoka County Jail</div>
+    <a href="AdminHome.html">Overview</a>
+    <div class="navh">Operate</div>
+    <a href="OfficerInmate.html">Inmates</a>
+    <a href="ManagerHome.html">Daily close-out</a>
+    <a href="ManagerRelease.html">Releases</a>
+    <a href="ManagerOrders.html">Orders</a>
+    <a href="ManagerReconcile.html">Reconcile</a>
+    <a href="AuditorHome.html">Reports</a>
+    <div class="navh">Manage</div>
+    <a href="AdminSettings.html">Facility settings</a>
+    <a href="#rules">Inmate rules</a>
+    <a href="AdminUsers.html" class="on">Users and access</a>
+    <div style="flex:1"></div>
+    <div style="border-top:1px solid #2a3650;padding:12px;color:#c7d0dd;font-size:14px">Capt. R. Hale<br><span style="color:#7b889c">Jail Administrator</span></div>
+    <a href="#logout" style="min-height:40px">Log out</a>
+  </nav>
+
+  <main style="flex:999 1 560px;min-width:0;display:flex;flex-direction:column">
+    <header style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;padding:14px 28px;background:#fff;border-bottom:1px solid #e3e8ef">
+      <div style="font-size:14px;color:#5a6779"><a href="AdminHome.html">Overview</a> / Users and access</div>
+      <div style="flex:1"></div>
+      <div style="font-weight:700">Atoka County Jail</div>
+    </header>
+
+    <div style="padding:24px 28px;display:flex;flex-direction:column;gap:20px">
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;align-items:flex-end">
+        <div>
+          <h1 style="margin:0;font-size:26px">Users and access</h1>
+          <div style="color:#5a6779;font-size:15px;margin-top:4px">Who can log in at this jail and what each person can do. A person's role decides which screens they see.</div>
+        </div>
+        <div style="display:flex;gap:10px"><button class="btn" type="button">Add staff user</button><button class="btn p" type="button">Create auditor login</button></div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(5, minmax(0, 1fr));gap:20px;align-items:start">
+        <div class="card" style="grid-column:span 3;overflow:hidden">
+          <div style="padding:14px 16px;border-bottom:1px solid #e3e8ef;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:10px">
+            <h2 style="margin:0;font-size:17px">Staff</h2>
+            <select aria-label="Filter by role" style="min-height:40px;padding:0 10px;border:1px solid #cdd5e0;border-radius:8px;font:14px 'Source Sans 3',sans-serif;background:#fff"><option>All roles</option><option>Detention Officer</option><option>Commissary Manager</option><option>Jail Administrator</option><option>Auditor</option></select>
+          </div>
+          <table>
+            <thead><tr><th>Name</th><th>Role</th><th>Last login</th><th>Status</th><th></th></tr></thead>
+            <tbody>
+              <tr><td><strong>Capt. R. Hale</strong><br><span class="help">rhale@atokacounty.ok.gov</span></td><td>Jail Administrator</td><td>Today 10:48 AM</td><td><span class="chip ok">Active</span></td><td><a href="#e" style="font-size:14px">Edit</a></td></tr>
+              <tr><td><strong>Donna Pruitt</strong><br><span class="help">dpruitt@atokacounty.ok.gov</span></td><td>Commissary Manager</td><td>Today 10:40 AM</td><td><span class="chip ok">Active</span></td><td><a href="#e" style="font-size:14px">Edit</a></td></tr>
+              <tr><td><strong>Sgt. T. Boyd</strong><br><span class="help">tboyd@atokacounty.ok.gov</span></td><td>Commissary Manager</td><td>Yesterday</td><td><span class="chip ok">Active</span></td><td><a href="#e" style="font-size:14px">Edit</a></td></tr>
+              <tr><td><strong>Ofc. J. Ramirez</strong><br><span class="help">jramirez@atokacounty.ok.gov</span></td><td>Detention Officer</td><td>Today 9:15 AM</td><td><span class="chip ok">Active</span></td><td><a href="#e" style="font-size:14px">Edit</a></td></tr>
+              <tr><td><strong>Ofc. M. Dill</strong><br><span class="help">mdill@atokacounty.ok.gov</span></td><td>Detention Officer</td><td>42 days ago</td><td><span class="chip warn">No login in 30 days</span></td><td><a href="#e" style="font-size:14px">Edit</a> <span style="color:#cdd5e0">|</span> <a href="#d" style="font-size:14px">Deactivate</a></td></tr>
+              <tr><td><strong>Kelly Marsh</strong><br><span class="help">kmarsh@sai.ok.gov</span></td><td>Auditor <span class="chip teal">Read only</span></td><td>Today 10:58 AM</td><td><span class="chip warn">Ends 11/15/2026</span></td><td><a href="#e" style="font-size:14px">Extend</a> <span style="color:#cdd5e0">|</span> <a href="#d" style="font-size:14px">End now</a></td></tr>
+              <tr><td colspan="5" style="color:#5a6779">7 more officers. <a href="#all">Show all 13</a></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="card" style="grid-column:span 2;padding:18px;display:flex;flex-direction:column;gap:14px">
+          <div>
+            <div style="font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#5a6779;font-weight:700">Create auditor login</div>
+            <div class="help">Read-only access to reports and the ledger for this jail. Ends automatically on the date you set. Prodigy Support can also create these.</div>
+          </div>
+          <label class="f">Name<input type="text" placeholder="Auditor's name"></label>
+          <label class="f">Email<input type="email" placeholder="Where the login link is sent"></label>
+          <label class="f">Who they are with<select><option>Oklahoma State Auditor and Inspector</option><option>County auditor or treasurer</option><option>Outside CPA firm</option><option>Other</option></select></label>
+          <div style="display:grid;grid-template-columns:repeat(2, minmax(0, 1fr));gap:12px">
+            <label class="f">Access starts<input type="date" value="2026-10-16"></label>
+            <label class="f">Access ends<input type="date" value="2026-11-15"></label>
+          </div>
+          <label class="f">Can see<select><option>Atoka County Jail only</option></select></label>
+          <div class="help">Every report they run and every page they open is logged under their name.</div>
+          <div style="display:flex;gap:10px;justify-content:flex-end"><button class="btn" type="button">Cancel</button><button class="btn p" type="button">Create and send login</button></div>
+        </div>
+      </div>
+
+      <div class="card" style="padding:18px">
+        <h2 style="margin:0 0 10px;font-size:17px">What each role can do</h2>
+        <div style="display:grid;grid-template-columns:repeat(4, minmax(0, 1fr));gap:12px">
+          <div class="role"><span><strong>Detention Officer</strong><small>Find and create inmates, deposits, bill inmates, same-day fixes, print receipts.</small></span></div>
+          <div class="role"><span><strong>Commissary Manager</strong><small>Everything an officer can, plus drawer counts, bank deposits, releases, refunds, reconciliation, approvals of officer fixes.</small></span></div>
+          <div class="role on"><span><strong>Jail Administrator</strong><small>Everything a manager can, plus facility settings, inmate rules, users, auditor logins, and the approvals you turned on.</small></span></div>
+          <div class="role"><span><strong>Auditor</strong><small>Read-only reports and ledger for a set period.</small></span></div>
+        </div>
+        <div class="help" style="margin-top:10px">Roles are fixed sets. If a jail needs a mix (for example, an officer who also closes the drawer), give that person the Manager role rather than a custom one.</div>
+      </div>
+    </div>
+  </main>
+</div>
+
+
+</body>
+</html>

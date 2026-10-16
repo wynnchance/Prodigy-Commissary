@@ -40,5 +40,5 @@ python3 build.py source docs
 | Detention Officer | Home, Inmate, Deposit, Bill/Fix, New inmate | Draft |
 | Commissary Manager | Today, Drawer, Bank deposit, Reconcile, Releases, Orders | Draft |
 | Auditor | Report library, sample report, read-only ledger | Draft |
-| Jail Administrator | Approvals, charge types, limits, users | Not started |
+| Jail Administrator | Overview and approvals, facility settings, users and auditor logins | Draft |
 | Handoff spec | Findings, before/after, developer spec | Not started |
