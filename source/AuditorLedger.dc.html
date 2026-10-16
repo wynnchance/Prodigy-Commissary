@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Auditor Ledger</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap">
+<style>
+body{margin:0;font-family:'Source Sans 3',system-ui,sans-serif;color:#1b2538;background:#f4f6f9}
+a{color:#1b5fb4}a:hover{color:#0f3f7d}
+.nav a{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:8px;color:#c7d0dd;text-decoration:none;font-size:15px;min-height:44px;box-sizing:border-box}
+.nav a:hover{background:#2a3650;color:#fff}
+.nav a.on{background:#1b5fb4;color:#fff;font-weight:600}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 16px;border-radius:8px;border:1px solid #cdd5e0;background:#fff;color:#1b2538;font:600 15px 'Source Sans 3',sans-serif;cursor:pointer;text-decoration:none}
+.btn.p{background:#1b5fb4;border-color:#1b5fb4;color:#fff}
+.card{background:#fff;border:1px solid #e3e8ef;border-radius:12px}
+.chip{display:inline-block;padding:2px 10px;border-radius:999px;font-size:13px;font-weight:600}
+.ok{background:#dcf5e6;color:#166534}.warn{background:#fff1d6;color:#8a4b00}.off{background:#e8ecf2;color:#4a5668}.teal{background:#d8f1f1;color:#0f5e5e}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th{text-align:left;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#5a6779;padding:10px 12px;border-bottom:1px solid #e3e8ef}
+td{padding:9px 12px;border-bottom:1px solid #eef1f5;vertical-align:top}
+.acct a{display:flex;justify-content:space-between;gap:8px;padding:10px 12px;border-radius:8px;text-decoration:none;color:#1b2538;font-size:14px;min-height:44px;box-sizing:border-box;align-items:center}
+.acct a:hover{background:#e8ecf2}
+.acct a.on{background:#e3eefc;color:#1b5fb4;font-weight:600}
+.acct h3{margin:0;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#5a6779;padding:12px 12px 4px}
+.f{display:flex;flex-direction:column;gap:6px;font-size:14px;color:#5a6779}
+.f select,.f input{min-height:44px;padding:0 12px;border:1px solid #cdd5e0;border-radius:8px;font:15px 'Source Sans 3',sans-serif;background:#fff;color:#1b2538}
+</style>
+</helmet>
+<div style="display:flex;flex-wrap:wrap;min-height:960px">
+  <nav class="nav" style="width:236px;background:#1b2538;padding:16px 12px;box-sizing:border-box;display:flex;flex-direction:column">
+    <div style="display:flex;align-items:center;gap:10px;padding:4px 12px 4px;color:#fff;font-weight:700;font-size:18px">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#5aa9ff" stroke-width="2" aria-hidden="true"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 12l9 4 9-4"/><path d="M3 17l9 4 9-4"/></svg>
+      Commissary
+    </div>
+    <div style="padding:0 12px 14px;color:#7b889c;font-size:13px">Auditor access, read only</div>
+    <a href="AuditorHome.dc.html">Reports</a>
+    <a href="AuditorLedger.dc.html" class="on">Ledger</a>
+    <a href="#inmates">Inmate accounts</a>
+    <a href="#runs">My report history</a>
+    <div style="flex:1"></div>
+    <div style="border-top:1px solid #2a3650;padding:12px;color:#c7d0dd;font-size:14px">Kelly Marsh<br><span style="color:#7b889c">Oklahoma SAI</span><br><span style="color:#7b889c">Access ends 11/15/2026</span></div>
+    <a href="#logout" style="min-height:40px">Log out</a>
+  </nav>
+
+  <main style="flex:999 1 560px;min-width:0;display:flex;flex-direction:column">
+    <header style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;padding:14px 28px;background:#fff;border-bottom:1px solid #e3e8ef">
+      <label class="f" style="flex:0 1 240px">Facility<select><option>Atoka County Jail</option></select></label>
+      <label class="f" style="flex:0 1 170px">From<input type="date" value="2026-09-01"></label>
+      <label class="f" style="flex:0 1 170px">To<input type="date" value="2026-09-30"></label>
+      <div style="flex:1"></div>
+      <span class="chip teal">Read only</span>
+    </header>
+
+    <div style="padding:24px 28px;display:flex;flex-direction:column;gap:16px">
+      <div>
+        <h1 style="margin:0;font-size:26px">Ledger</h1>
+        <div style="color:#5a6779;font-size:15px;margin-top:4px">The accounting view of the same money. Every entry here was created by a plain-language action on a jail screen; the action and the receipt are shown beside each entry.</div>
+      </div>
+
+      <div style="display:flex;flex-wrap:wrap;gap:20px;align-items:flex-start">
+        <nav class="acct card" style="width:280px;padding:6px;box-sizing:border-box" aria-label="Accounts">
+          <h3>Trust fund</h3>
+          <a href="#a1" class="on"><span>Resident Balances</span><span>$13,978.16</span></a>
+          <a href="#a2"><span>On-hold Balances</span><span>$230.00</span></a>
+          <a href="#a3"><span>Cash Drawer 1 (booking)</span><span>$0.00</span></a>
+          <a href="#a4"><span>Cash in Transit</span><span>$412.00</span></a>
+          <a href="#a5"><span>Bank Account (county)</span><span>$14,962.41</span></a>
+          <a href="#a6"><span>Deposit Receipts</span><span>$0.00</span></a>
+          <h3>Payables</h3>
+          <a href="#a7"><span>Commissary Payable</span><span>$2,318.40</span></a>
+          <a href="#a8"><span>Numi Debit Card Clearing</span><span>$320.00</span></a>
+          <a href="#a9"><span>Accounts Payable</span><span>$0.00</span></a>
+          <h3>Income and expense</h3>
+          <a href="#a10"><span>Medical Co-pays</span><span>$184.00</span></a>
+          <a href="#a11"><span>Phone Time Fees</span><span>$96.50</span></a>
+          <a href="#a12"><span>Over/Short</span><span>-$5.00</span></a>
+          <a href="#a13"><span>Debt Write-Off</span><span>$12.60</span></a>
+        </nav>
+
+        <div style="flex:1 1 560px;min-width:0;display:flex;flex-direction:column;gap:12px">
+          <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:10px">
+            <div><h2 style="margin:0;font-size:18px">Resident Balances</h2><div style="color:#5a6779;font-size:14px">Liability. Sum of every open inmate account. 09/01 opening $13,402.91, 09/30 closing $13,978.16.</div></div>
+            <div style="display:flex;gap:8px"><button class="btn" type="button" style="min-height:40px">Print / PDF</button><button class="btn" type="button" style="min-height:40px">Excel</button></div>
+          </div>
+          <div class="card" style="overflow:hidden">
+            <table>
+              <thead><tr><th>Date</th><th>Entry</th><th>Jail action and receipt</th><th>Other side</th><th style="text-align:right">Debit</th><th style="text-align:right">Credit</th><th>By</th></tr></thead>
+              <tbody>
+                <tr><td>09/30 3:10 PM</td><td>T-48812</td><td>Bank deposit marked deposited, slip 09/30</td><td>Cash in Transit to Bank Account</td><td style="text-align:right"></td><td style="text-align:right"></td><td>Pruitt</td></tr>
+                <tr><td>09/30 2:48 PM</td><td>T-48810</td><td>Cash deposit, receipt #10315, GARZA M.</td><td>Cash Drawer 1</td><td style="text-align:right"></td><td style="text-align:right">$40.00</td><td>Ramirez</td></tr>
+                <tr><td>09/30 1:15 PM</td><td>T-48806</td><td>Medical visit charge, receipt #10314, WEBB T.</td><td>Medical Co-pays</td><td style="text-align:right">$8.00</td><td style="text-align:right"></td><td>Boyd</td></tr>
+                <tr><td>09/30 11:02 AM</td><td>T-48801</td><td>Commissary order #77901 posted, PRICE J.</td><td>Commissary Payable</td><td style="text-align:right">$31.75</td><td style="text-align:right"></td><td>System</td></tr>
+                <tr><td>09/30 9:40 AM</td><td>T-48797</td><td>Fix: deposit moved to the right inmate, receipt #10309 (approved Pruitt)</td><td>Resident Balances</td><td style="text-align:right">$25.00</td><td style="text-align:right">$25.00</td><td>Ramirez</td></tr>
+                <tr><td>09/29 4:05 PM</td><td>T-48790</td><td>Release paid out by debit card, release form signed, NGUYEN P.</td><td>Numi Debit Card Clearing</td><td style="text-align:right">$118.20</td><td style="text-align:right"></td><td>Pruitt</td></tr>
+                <tr><td>09/29 8:15 AM</td><td>T-48781</td><td>Check deposit on hold to 10/06, receipt #10301, ALLEN C.</td><td>On-hold Balances</td><td style="text-align:right"></td><td style="text-align:right">$50.00</td><td>Ramirez</td></tr>
+                <tr><td colspan="7" style="color:#5a6779">388 more entries in September. <a href="#all">Show all</a> or export.</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div style="font-size:13px;color:#5a6779">Entries can be opened but not changed. Fixes always appear as a reversing pair, never as an edit. Entry numbers are continuous; a missing number would show as a gap.</div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":960}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

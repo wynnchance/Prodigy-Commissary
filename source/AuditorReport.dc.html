@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Auditor Report View</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap">
+<style>
+body{margin:0;font-family:'Source Sans 3',system-ui,sans-serif;color:#1b2538;background:#f4f6f9}
+a{color:#1b5fb4}a:hover{color:#0f3f7d}
+.nav a{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:8px;color:#c7d0dd;text-decoration:none;font-size:15px;min-height:44px;box-sizing:border-box}
+.nav a:hover{background:#2a3650;color:#fff}
+.nav a.on{background:#1b5fb4;color:#fff;font-weight:600}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 16px;border-radius:8px;border:1px solid #cdd5e0;background:#fff;color:#1b2538;font:600 15px 'Source Sans 3',sans-serif;cursor:pointer;text-decoration:none}
+.btn.p{background:#1b5fb4;border-color:#1b5fb4;color:#fff}
+.card{background:#fff;border:1px solid #e3e8ef;border-radius:12px}
+.chip{display:inline-block;padding:2px 10px;border-radius:999px;font-size:13px;font-weight:600}
+.ok{background:#dcf5e6;color:#166534}.warn{background:#fff1d6;color:#8a4b00}.bad{background:#fde4e1;color:#9f1d12}.teal{background:#d8f1f1;color:#0f5e5e}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th{text-align:left;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#5a6779;padding:10px 12px;border-bottom:1px solid #e3e8ef}
+td{padding:9px 12px;border-bottom:1px solid #eef1f5;vertical-align:middle}
+tr.gap td{background:#fff7ea}
+.f{display:flex;flex-direction:column;gap:6px;font-size:14px;color:#5a6779}
+.f select,.f input{min-height:44px;padding:0 12px;border:1px solid #cdd5e0;border-radius:8px;font:15px 'Source Sans 3',sans-serif;background:#fff;color:#1b2538}
+</style>
+</helmet>
+<div style="display:flex;flex-wrap:wrap;min-height:1000px">
+  <nav class="nav" style="width:236px;background:#1b2538;padding:16px 12px;box-sizing:border-box;display:flex;flex-direction:column">
+    <div style="display:flex;align-items:center;gap:10px;padding:4px 12px 4px;color:#fff;font-weight:700;font-size:18px">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#5aa9ff" stroke-width="2" aria-hidden="true"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 12l9 4 9-4"/><path d="M3 17l9 4 9-4"/></svg>
+      Commissary
+    </div>
+    <div style="padding:0 12px 14px;color:#7b889c;font-size:13px">Auditor access, read only</div>
+    <a href="AuditorHome.dc.html" class="on">Reports</a>
+    <a href="AuditorLedger.dc.html">Ledger</a>
+    <a href="#inmates">Inmate accounts</a>
+    <a href="#runs">My report history</a>
+    <div style="flex:1"></div>
+    <div style="border-top:1px solid #2a3650;padding:12px;color:#c7d0dd;font-size:14px">Kelly Marsh<br><span style="color:#7b889c">Oklahoma SAI</span><br><span style="color:#7b889c">Access ends 11/15/2026</span></div>
+    <a href="#logout" style="min-height:40px">Log out</a>
+  </nav>
+
+  <main style="flex:999 1 560px;min-width:0;display:flex;flex-direction:column">
+    <header style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;padding:14px 28px;background:#fff;border-bottom:1px solid #e3e8ef">
+      <div style="font-size:14px;color:#5a6779"><a href="AuditorHome.dc.html">Reports</a> / Daily receipts to deposits</div>
+      <div style="flex:1"></div>
+      <span class="chip teal">Read only</span>
+    </header>
+
+    <div style="padding:24px 28px;display:flex;flex-direction:column;gap:18px">
+      <div style="display:flex;flex-wrap:wrap;gap:16px;align-items:flex-end;justify-content:space-between">
+        <div>
+          <h1 style="margin:0;font-size:26px">Daily receipts to deposits</h1>
+          <div style="color:#5a6779;font-size:15px;margin-top:4px">Atoka County Jail, September 1 to September 30, 2026. Cash, check, and money order receipts compared with bank deposits, by day.</div>
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <button class="btn" type="button">Print / PDF</button>
+          <button class="btn" type="button">Email</button>
+          <button class="btn" type="button">Excel</button>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:flex-end">
+        <label class="f" style="flex:0 1 240px">Facility<select><option>Atoka County Jail</option></select></label>
+        <label class="f" style="flex:0 1 170px">From<input type="date" value="2026-09-01"></label>
+        <label class="f" style="flex:0 1 170px">To<input type="date" value="2026-09-30"></label>
+        <label class="f" style="flex:0 1 220px">Show<select><option>All days</option><option>Only days with a gap</option></select></label>
+        <button class="btn p" type="button">Run</button>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(4, minmax(0, 1fr));gap:16px">
+        <div class="card" style="padding:14px"><div style="font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#5a6779;font-weight:700">Receipted</div><div style="font-size:26px;font-weight:700">$11,842.50</div><div style="color:#5a6779;font-size:13px">214 receipts</div></div>
+        <div class="card" style="padding:14px"><div style="font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#5a6779;font-weight:700">Deposited</div><div style="font-size:26px;font-weight:700">$11,842.50</div><div style="color:#5a6779;font-size:13px">21 bank deposits</div></div>
+        <div class="card" style="padding:14px"><div style="font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#5a6779;font-weight:700">Not deposited</div><div style="font-size:26px;font-weight:700;color:#166534">$0.00</div><div style="color:#5a6779;font-size:13px">at period end</div></div>
+        <div class="card" style="padding:14px"><div style="font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#5a6779;font-weight:700">Days to deposit</div><div style="font-size:26px;font-weight:700">1.3 avg</div><div style="color:#8a4b00;font-size:13px">2 days over 3 days</div></div>
+      </div>
+
+      <div class="card" style="overflow:hidden">
+        <table>
+          <thead><tr><th>Day</th><th style="text-align:right">Cash</th><th style="text-align:right">Checks and MOs</th><th style="text-align:right">Receipted</th><th>Receipts</th><th>Deposited on</th><th style="text-align:right">Deposited</th><th>Days</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>Mon 09/01</td><td style="text-align:right">$210.00</td><td style="text-align:right">$140.00</td><td style="text-align:right">$350.00</td><td>#10102 to #10109</td><td>09/02</td><td style="text-align:right">$350.00</td><td>1</td><td><span class="chip ok">Matched</span></td></tr>
+            <tr><td>Tue 09/02</td><td style="text-align:right">$96.00</td><td style="text-align:right">$0.00</td><td style="text-align:right">$96.00</td><td>#10110 to #10114</td><td>09/03</td><td style="text-align:right">$96.00</td><td>1</td><td><span class="chip ok">Matched</span></td></tr>
+            <tr><td>Wed 09/03</td><td style="text-align:right">$418.00</td><td style="text-align:right">$525.00</td><td style="text-align:right">$943.00</td><td>#10115 to #10131</td><td>09/04</td><td style="text-align:right">$943.00</td><td>1</td><td><span class="chip ok">Matched</span></td></tr>
+            <tr class="gap"><td>Thu 09/04</td><td style="text-align:right">$305.00</td><td style="text-align:right">$0.00</td><td style="text-align:right">$305.00</td><td>#10132 to #10140</td><td>09/09</td><td style="text-align:right">$305.00</td><td><span class="chip warn">5</span></td><td><span class="chip warn">Late deposit</span> <a href="#n" style="font-size:13px">Note: Labor Day weekend, Manager out</a></td></tr>
+            <tr><td>Fri 09/05</td><td style="text-align:right">$150.00</td><td style="text-align:right">$80.00</td><td style="text-align:right">$230.00</td><td>#10141 to #10146</td><td>09/09</td><td style="text-align:right">$230.00</td><td><span class="chip warn">4</span></td><td><span class="chip warn">Late deposit</span></td></tr>
+            <tr><td>Mon 09/08</td><td style="text-align:right">$512.00</td><td style="text-align:right">$300.00</td><td style="text-align:right">$812.00</td><td>#10147 to #10163</td><td>09/09</td><td style="text-align:right">$812.00</td><td>1</td><td><span class="chip ok">Matched</span></td></tr>
+            <tr><td>Tue 09/09</td><td style="text-align:right">$88.00</td><td style="text-align:right">$0.00</td><td style="text-align:right">$88.00</td><td>#10164 to #10167 (1 void, #10165, approved Pruitt)</td><td>09/10</td><td style="text-align:right">$88.00</td><td>1</td><td><span class="chip ok">Matched</span></td></tr>
+            <tr><td colspan="9" style="color:#5a6779">18 more days. All matched, deposited next business day. <a href="#all">Show all 25 days</a></td></tr>
+            <tr style="font-weight:700;background:#f9fafc"><td>September total</td><td style="text-align:right">$7,106.50</td><td style="text-align:right">$4,736.00</td><td style="text-align:right">$11,842.50</td><td>#10102 to #10315</td><td></td><td style="text-align:right">$11,842.50</td><td>1.3</td><td><span class="chip ok">No gap</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font-size:13px;color:#5a6779;padding:0 4px">
+        <span>Atoka County Jail, 09/01/2026 to 09/30/2026. Run 10/16/2026 10:58 AM by Kelly Marsh (Oklahoma SAI). Report ID R-2026-10-16-0412.</span>
+        <span>Receipt numbers link to the receipt. Deposits link to the slip. This footer prints on every page.</span>
+      </div>
+    </div>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1000}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

@@ -39,6 +39,6 @@ python3 build.py source docs
 | Prodigy shell and navigation | Main, Resident, Facility | First draft |
 | Detention Officer | Home, Inmate, Deposit, Bill/Fix, New inmate | Draft |
 | Commissary Manager | Today, Drawer, Bank deposit, Reconcile, Releases, Orders | Draft |
-| Auditor | Report library, read-only ledger | Not started |
+| Auditor | Report library, sample report, read-only ledger | Draft |
 | Jail Administrator | Approvals, charge types, limits, users | Not started |
 | Handoff spec | Findings, before/after, developer spec | Not started |

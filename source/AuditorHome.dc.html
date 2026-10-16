@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Auditor Report Library</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap">
+<style>
+body{margin:0;font-family:'Source Sans 3',system-ui,sans-serif;color:#1b2538;background:#f4f6f9}
+a{color:#1b5fb4}a:hover{color:#0f3f7d}
+.nav a{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:8px;color:#c7d0dd;text-decoration:none;font-size:15px;min-height:44px;box-sizing:border-box}
+.nav a:hover{background:#2a3650;color:#fff}
+.nav a.on{background:#1b5fb4;color:#fff;font-weight:600}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 16px;border-radius:8px;border:1px solid #cdd5e0;background:#fff;color:#1b2538;font:600 15px 'Source Sans 3',sans-serif;cursor:pointer;text-decoration:none}
+.btn.p{background:#1b5fb4;border-color:#1b5fb4;color:#fff}
+.btn.s{min-height:36px;padding:0 12px;font-size:14px}
+.card{background:#fff;border:1px solid #e3e8ef;border-radius:12px}
+.chip{display:inline-block;padding:2px 10px;border-radius:999px;font-size:13px;font-weight:600}
+.ok{background:#dcf5e6;color:#166534}.off{background:#e8ecf2;color:#4a5668}.teal{background:#d8f1f1;color:#0f5e5e}
+.grp{display:flex;flex-direction:column}
+.grp h2{margin:0;font-size:15px;padding:12px 16px;background:#f9fafc;border-bottom:1px solid #e3e8ef;color:#5a6779;letter-spacing:.04em;text-transform:uppercase;font-size:12px}
+.rep{display:flex;gap:14px;align-items:center;padding:12px 16px;border-bottom:1px solid #eef1f5;font-size:15px}
+.rep:last-child{border-bottom:0}
+.rep .t{flex:1;min-width:0}
+.rep small{display:block;color:#5a6779;font-size:13px}
+.f{display:flex;flex-direction:column;gap:6px;font-size:14px;color:#5a6779}
+.f select,.f input{min-height:44px;padding:0 12px;border:1px solid #cdd5e0;border-radius:8px;font:15px 'Source Sans 3',sans-serif;background:#fff;color:#1b2538}
+</style>
+</helmet>
+<div style="display:flex;flex-wrap:wrap;min-height:1060px">
+  <nav class="nav" style="width:236px;background:#1b2538;padding:16px 12px;box-sizing:border-box;display:flex;flex-direction:column">
+    <div style="display:flex;align-items:center;gap:10px;padding:4px 12px 4px;color:#fff;font-weight:700;font-size:18px">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#5aa9ff" stroke-width="2" aria-hidden="true"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 12l9 4 9-4"/><path d="M3 17l9 4 9-4"/></svg>
+      Commissary
+    </div>
+    <div style="padding:0 12px 14px;color:#7b889c;font-size:13px">Auditor access, read only</div>
+    <a href="AuditorHome.dc.html" class="on">Reports</a>
+    <a href="AuditorLedger.dc.html">Ledger</a>
+    <a href="#inmates">Inmate accounts</a>
+    <a href="#runs">My report history</a>
+    <div style="flex:1"></div>
+    <div style="border-top:1px solid #2a3650;padding:12px;color:#c7d0dd;font-size:14px">Kelly Marsh<br><span style="color:#7b889c">Oklahoma SAI</span><br><span style="color:#7b889c">Access ends 11/15/2026</span></div>
+    <a href="#logout" style="min-height:40px">Log out</a>
+  </nav>
+
+  <main style="flex:999 1 560px;min-width:0;display:flex;flex-direction:column">
+    <header style="display:flex;flex-wrap:wrap;gap:12px;align-items:center;padding:14px 28px;background:#fff;border-bottom:1px solid #e3e8ef">
+      <label class="f" style="flex:0 1 260px">Facility<select><option>Atoka County Jail</option><option>All facilities I can see (2)</option></select></label>
+      <label class="f" style="flex:0 1 180px">From<input type="date" value="2026-07-01"></label>
+      <label class="f" style="flex:0 1 180px">To<input type="date" value="2026-09-30"></label>
+      <div style="flex:1"></div>
+      <span class="chip teal">Read only</span>
+    </header>
+
+    <div style="padding:24px 28px;display:flex;flex-direction:column;gap:20px">
+      <div>
+        <h1 style="margin:0;font-size:26px">Reports</h1>
+        <div style="color:#5a6779;font-size:15px;margin-top:4px">Pick the facility and period once above. Every report opens on screen, prints to PDF, or emails, with the facility, period, run date, and your name in the footer. Each run is logged.</div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(2, minmax(0, 1fr));gap:20px;align-items:start">
+        <div class="card grp">
+          <h2>Receipts and deposits</h2>
+          <div class="rep"><div class="t"><a href="AuditorReport.dc.html"><strong>Daily receipts to deposits</strong></a><small>Was every dollar receipted also deposited, and how soon. Flags days with a gap.</small></div><a class="btn s" href="AuditorReport.dc.html">Open</a></div>
+          <div class="rep"><div class="t"><strong>Receipt register</strong><small>Every receipt in number order. Gaps, voids, and fixes highlighted with who approved them.</small></div><a class="btn s" href="#r2">Open</a></div>
+          <div class="rep"><div class="t"><strong>Bank deposits</strong><small>Each deposit with its slip, the receipts behind it, and the date marked deposited.</small></div><a class="btn s" href="#r3">Open</a></div>
+          <div class="rep"><div class="t"><strong>Drawer counts and Over/Short</strong><small>Every count, who counted, who verified, and any difference with its note.</small></div><a class="btn s" href="#r4">Open</a></div>
+        </div>
+
+        <div class="card grp">
+          <h2>Balances and reconciliation</h2>
+          <div class="rep"><div class="t"><strong>Trust fund reconciliation</strong><small>Bank balance to inmate balances plus holds and outstanding checks, by month, with sign-off.</small></div><a class="btn s" href="#r5">Open</a></div>
+          <div class="rep"><div class="t"><strong>Inmate balance listing</strong><small>Every account and its balance as of a date. Totals match the reconciliation.</small></div><a class="btn s" href="#r6">Open</a></div>
+          <div class="rep"><div class="t"><strong>Inmate account history</strong><small>Full activity for one inmate. Also used for subpoenas.</small></div><a class="btn s" href="#r7">Open</a></div>
+          <div class="rep"><div class="t"><strong>Outstanding and stale checks</strong><small>Checks not cleared, aged, with the unclaimed property status.</small></div><a class="btn s" href="#r8">Open</a></div>
+        </div>
+
+        <div class="card grp">
+          <h2>Payouts and transfers</h2>
+          <div class="rep"><div class="t"><strong>Release register</strong><small>Who was released, amount paid, method, and whether the release form was signed.</small></div><a class="btn s" href="#r9">Open</a></div>
+          <div class="rep"><div class="t"><strong>Trust disbursements by purpose</strong><small>Every payout from the trust fund grouped by purpose. Supports the 19 O.S. 531 test in Oklahoma.</small></div><a class="btn s" href="#r10">Open</a></div>
+          <div class="rep"><div class="t"><strong>Commissary transfers and sales</strong><small>Each transfer from trust to the commissary account with the sales report behind it.</small></div><a class="btn s" href="#r11">Open</a></div>
+          <div class="rep"><div class="t"><strong>Medical and other charges</strong><small>Charges billed to inmates by type, with amount and who posted them.</small></div><a class="btn s" href="#r12">Open</a></div>
+          <div class="rep"><div class="t"><strong>Commission statement</strong><small>Vendor commissions by month, recalculated from sales. Supports LGC 351.0415 in Texas.</small></div><a class="btn s" href="#r13">Open</a></div>
+        </div>
+
+        <div class="card grp">
+          <h2>Controls</h2>
+          <div class="rep"><div class="t"><strong>Adjustments and fixes</strong><small>Every void, move, and correction with who did it, who approved it, and why.</small></div><a class="btn s" href="#r14">Open</a></div>
+          <div class="rep"><div class="t"><strong>Who did what</strong><small>Receipting, depositing, and reconciling by person, to check that duties are separated.</small></div><a class="btn s" href="#r15">Open</a></div>
+          <div class="rep"><div class="t"><strong>User access and activity</strong><small>Roles, logins, and sensitive actions, including auditor report runs.</small></div><a class="btn s" href="#r16">Open</a></div>
+        </div>
+      </div>
+
+      <div class="card" style="padding:16px;display:flex;flex-wrap:wrap;gap:16px;align-items:center">
+        <div style="flex:1 1 400px;font-size:15px"><strong>Audit packet.</strong> Runs the standard set (receipts to deposits, receipt register, reconciliation, balance listing, release register, disbursements, adjustments) for the period as one PDF.</div>
+        <button class="btn p" type="button">Build audit packet</button>
+      </div>
+    </div>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1060}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>
